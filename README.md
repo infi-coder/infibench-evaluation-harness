@@ -1,6 +1,8 @@
 <h1 align="center">Inference for InfiCoder-Eval</h1>
 
-<h4 align="center">(Forked from <a href="https://github.com/bigcode-project/bigcode-evaluation-harness">Code Generation LM Evaluation Harness</a>)</h1>
+<h4 align="center">The InfiCoder Team</h4>
+
+<h4 align="center">(Forked from <a href="https://github.com/bigcode-project/bigcode-evaluation-harness">Code Generation LM Evaluation Harness</a>)</h4>
 
 
 <h4 align="center">
