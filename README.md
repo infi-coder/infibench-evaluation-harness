@@ -2,6 +2,8 @@
 
 <h4 align="center">The InfiCoder Team</h4>
 
+<h4 align="center">Project Page: https://infi-coder.github.io/inficoder-eval/</h4>
+
 <h4 align="center">(Forked from <a href="https://github.com/bigcode-project/bigcode-evaluation-harness">Code Generation LM Evaluation Harness</a>)</h4>
 
 
@@ -78,7 +80,7 @@ accelerate launch ..../ffqa-evaluation-harness/main.py --model microsoft/phi-1_5
 python3 ffqa_processor.py generations_phi-1_5.json references.json ../phi-1_5_output.csv --eos '<|endoftext|>'
 ```
 
-Detail illustration is in [Evaluation Repo](https://github.com/infi-coder/inficoder-eval-framework).
+A detailed illustration is on our project page: https://infi-coder.github.io/inficoder-eval/.
 
 
 ## Implementing new tasks
