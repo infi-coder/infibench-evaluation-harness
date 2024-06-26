@@ -1,0 +1,27 @@
+# Corresponding to post https://stackoverflow.com/questions/71267256
+id: 2-10-490
+prompt_path: prompt_2-10-490.txt
+type: knowledge question-answering
+
+lang: rust
+
+grading: 
+  max_score: 2.0
+  min_score: 0.0
+  keywords:
+    - content: 
+        or:
+          - "if let ... else { return }"
+          - "let-else statements"
+          - "let-else"
+      weight: 2.0
+    - content: 
+        or:
+          - "Option::and_then"
+          - "and_then"
+      weight: 1.0
+    - content: 
+        and:
+          - "operator"
+          - "?"
+      weight: 1.0

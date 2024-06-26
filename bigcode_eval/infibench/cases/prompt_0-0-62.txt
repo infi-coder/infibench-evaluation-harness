@@ -1,0 +1,28 @@
+I'm building a clone of HackerNews and am getting the following error:
+
+```bash
+vue.esm.js?efeb:591 [Vue warn]: Avoid using non-primitive value as key, use string/number value instead.
+```
+
+The error seems to be coming from Single.vue but I can't work what it is? The template is as follows:
+
+```html
+<template>
+    <div class="container">
+        <h2>{{ story.title }}</h2>
+        <p>Score: {{ story.score }}</p>
+        <p>{{ story.url }}</p>
+        <div v-for="comment in comments" :key="comment">
+          <div class="comment-wrap">
+                <div class="comment-block">
+                    <p class="comment-text">{{ comment.text }}</p>
+                    <div class="bottom-comment">
+                        <div class="comment-author">{{ comment.by }}</div>
+                        <div class="comment-date">{{ comment.time }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+```

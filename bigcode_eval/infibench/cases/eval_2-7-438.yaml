@@ -1,0 +1,14 @@
+id: 2-7-438
+prompt_path: prompt_2-7-438.txt
+type: non-code debugging
+lang: php
+grading:
+  keywords:
+    - content:
+        and:
+          - "bin/console --env=dev doctrine:migrations:execute"
+          - "--down"
+          - "--no-interaction"
+          - "-vvv"
+
+

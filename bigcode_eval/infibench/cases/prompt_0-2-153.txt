@@ -1,0 +1,13 @@
+I got borders on all the edges by doing something like:
+
+```html
+<div class="border border-blue-900">foo</div>
+```
+
+It is actually a mistake, since I want to draw a line only to the TOP. I tried the following code, but the lines are drawn on all edges.
+
+```html
+<div class="border border-blue-900 border-t-1">foo</div>
+```
+
+How to have the line drawn only to the top?

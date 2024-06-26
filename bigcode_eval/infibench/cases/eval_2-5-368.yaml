@@ -1,0 +1,9 @@
+id: 2-5-368
+prompt_path: prompt_2-5-368.txt
+type: non-code debugging
+lang: java
+grading:
+  similarity:
+    - metric: rougeLsum
+      references:
+        - path: answer_369_0.txt

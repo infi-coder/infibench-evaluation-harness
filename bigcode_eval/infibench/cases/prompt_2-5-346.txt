@@ -1,0 +1,38 @@
+I've created a new Java project in IntelliJ with Gradle that uses Java 17. When running my app it has the error Cause: error: invalid source release: 17.
+
+My Settings
+
+I've installed openjdk-17 through IntelliJ and set it as my Project SDK.
+The Project language level has been set to 17 - Sealed types, always-strict floating-point semantics.
+In Modules -> Sources I've set the Language level to Project default (17 - Sealed types, always strict floating-point semantics).
+In Modules -> Dependencies I've set the Module SDK to Project SDK openjdk-17.
+In Settings -> Build, Execution, Deployment -> Compiler -> Java Compiler I've set the Project bytecode version to 17.
+Gradle:
+```
+plugins {
+    id 'org.springframework.boot' version '2.5.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.app'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+```
+How do I resolve this?

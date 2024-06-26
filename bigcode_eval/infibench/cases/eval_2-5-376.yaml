@@ -1,0 +1,16 @@
+id: 2-5-376
+prompt_path: prompt_2-5-376.txt
+type: non-code debugging
+lang: java
+grading:
+  keywords:
+    - content: "Project Structure"
+      to_lower: true
+    - content: "Language level"
+      to_lower: true
+    - content: "Build, Execution, Deployment"
+      to_lower: true
+    - content: "Java Compiler"
+      to_lower: true
+    - content: "8"
+      to_lower: true

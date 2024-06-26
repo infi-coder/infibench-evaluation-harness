@@ -1,0 +1,30 @@
+# Corresponding to post https://stackoverflow.com/questions/54277392
+id: 2-9-473
+prompt_path: prompt_2-9-473.txt
+# relative path to the prompt text
+
+type: non-code debugging
+lang: ruby
+
+grading:
+  max_score: 3.0
+  min_score: 0.0
+  blank_filling:
+    template: "1. Remove the [blank]:\n```\nrm -rf config/[blank]\n```\n2. Create a new [blank]:\n```\nEDITOR=\"mate --wait\" bin/rails credentials:edit\n```"
+    targets:
+      - "credentials"
+      - "credentials.yml.enc"
+      - "credentials"
+
+#grading: 
+  #blank_filling:
+    #template: "1. Remove the [blank]:\n```\nrm -rf config/[blank]\n```
+    #2. Create a new [blank]:
+    #```
+    #EDITOR="mate --wait" bin/rails credentials:edit\n```"
+
+    #blank_str: "[blank]"
+    #targets:
+   #- "credentials"
+    #- "credentials.yml.enc"
+    #- "credentials"

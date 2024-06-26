@@ -1,0 +1,13 @@
+Terminal error: zsh: permission denied: ./startup.sh
+
+I am running a command
+```
+./startup.sh nginx:start
+```
+
+and I am getting this error message
+```
+zsh: permission denied: ./startup.sh
+```
+
+why could this be happening?

@@ -1,0 +1,59 @@
+# Corresponding to post https://stackoverflow.com/questions/52637835
+id: 0-2-162
+# for case self identificaton
+
+prompt_path: prompt_0-2-162.txt
+# relative path to the prompt text
+
+# type: code debugging
+type: code completion
+# type: knowledge question-answering
+# question type, for later statistics
+
+lang: html
+# question language or area, for later statistics
+
+# full_score: 1.0
+# [optional] the full score of this case in the final suite report
+
+# null_score: 0.0
+# [optional]the score of providing no response
+
+grading:
+  
+  # max_score: float
+  # the maximum score within the test case for clipping purpose, if not specified, no maximum clipping
+  
+  # min_score: float
+  # the minimum score within the test case for clipping purpose, if not specified, no minimum clipping
+  
+  blank_filling:
+    template: >
+      ```javascript
+      const [red, green, blue] = [69, 111, 225]
+      const section1 = document.querySelector('.section1')
+
+      window.addEventListener([blank], () => {
+        let y = 1 + (window.scrollY || window.pageYOffset) / 150
+        y = y < 1 ? 1 : y // ensure y is always >= 1 (due to Safari's elastic scroll)
+        const [r, g, b] = [red/y, green/y, blue/y].map(Math.round)
+        section1[blank] = `rgb(${r}, ${g}, ${b})`
+      })
+      ```
+    
+    # blank_str: "[blank]"
+    # [optional] how blanks are represented in the template
+
+    escape: " '\"\n`"
+    # [optional] list of characters to be pre-filtered for model responses for blanks, default: " '"·"
+
+    targets: 
+        # list gold answers for blanks sequentially
+        - scroll
+        - .style.backgroundColor
+        # - ...
+        # - content: ...
+        #   weight: 1.0
+        #   # [optional] customized blank weight 
+        #   to_lower: false
+        #   # [optional] whether to be case-sensitive (default is sensitive, set to true will apply lower() then match)

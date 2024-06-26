@@ -1,0 +1,5 @@
+Please write a function `func` in Python to compute the number of ways to form a string of length n using k characters such that at most two adjacent characters can be same.
+
+The function `func` takes two arguments `n` and `k`, and returns the number.
+
+Function signature is: `func(n, k)`

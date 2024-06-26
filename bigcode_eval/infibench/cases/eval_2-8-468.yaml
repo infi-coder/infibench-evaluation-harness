@@ -1,0 +1,9 @@
+id: 2-8-468
+prompt_path: prompt_2-8-468.txt
+type: code completion
+lang: go
+grading:
+  unit_test:
+    tests:
+      - prefix_path: 'test_2-8-468/prefix.go'
+        path: 'test_2-8-468/suffix.go'

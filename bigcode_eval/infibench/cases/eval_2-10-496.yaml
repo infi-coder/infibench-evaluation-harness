@@ -1,0 +1,32 @@
+# Corresponding to post https://stackoverflow.com/questions/70193935
+id: 2-10-496
+
+prompt_path: prompt_2-10-496.txt
+type: knowledge question-answering
+lang: rust
+
+
+grading:
+  
+  max_score: 2.0
+  min_score: 0.0
+
+  keywords:
+    - content: 
+        or:
+          - "sort_unstable_by_key(|[item]| ([item].row, [item].column))"
+          - "sort_by_key(|[item]| ([item].row, [item].column))"
+      weight: 2.0
+    - content: 
+        or:
+          - "impl PartialOrd"
+          - "impl Ord"
+      weight: 1.0
+    - content:
+        and:
+          - content: 
+              or:
+                - "sort_by"
+                - "sort_unstable_by"
+          - "cmp"
+      weight: 1.0

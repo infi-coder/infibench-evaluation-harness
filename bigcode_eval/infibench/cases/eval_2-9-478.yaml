@@ -1,0 +1,14 @@
+# Corresponding to post https://stackoverflow.com/questions/69229112
+id: 2-9-478
+prompt_path: prompt_2-9-478.txt
+type: non-code debugging
+lang: ruby
+# question language or area, for later statistics
+
+
+grading:
+  max_score: 2.0
+  min_score: 0.0
+  keywords:
+    - "reference"
+    - "bundle update devise"

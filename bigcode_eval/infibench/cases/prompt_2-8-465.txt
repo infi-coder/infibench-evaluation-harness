@@ -1,0 +1,9 @@
+Is there a go command to force go test to always run test and not to cache test results.
+
+Specifically, please answer the question by repeating the following template and filling "[blank]". You don't need to output any other things:
+
+You can use the go command:
+```bash
+[blank]
+```
+

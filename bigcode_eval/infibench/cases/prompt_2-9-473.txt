@@ -1,0 +1,21 @@
+I've finished 11 chapters of the rails tutorial, deployed my app to heroku (locally it worked perfectly) and it crashing all time. I'm using rails 5.2.2 After execution of command $heroku run rails console I'm receiving this:
+```
+/app/vendor/bundle/ruby/2.5.0/gems/activesupport-5.2.2/lib/active_support/message_encryptor.rb:206:in `rescue in _decrypt': ActiveSupport::MessageEncryptor::InvalidMessage (ActiveSupport::MessageEncryptor::InvalidMessage)
+```
+And I'm receiving these errors when deploying to heroku:
+```
+To heroku.com:cryptic-chamber-73265.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'git@heroku.com:cryptic-chamber-73265.git'
+```
+How to fix the error?
+Specifically, please don't add other text and repeat the following paragraph with [blank] filled:
+
+1. Remove the [blank]:
+```
+rm -rf config/[blank]
+```
+2. Create a new [blank]:
+```
+EDITOR=\"mate --wait\" bin/rails credentials:edit
+```

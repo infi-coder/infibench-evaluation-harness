@@ -1,0 +1,28 @@
+I have a DataFrame with columns A, B, and C. For each value of A, I would like to select the row with the minimum value in column B.
+
+That is, from this:
+
+```python
+df = pd.DataFrame({'A': [1, 1, 1, 2, 2, 2],
+                   'B': [4, 5, 2, 7, 4, 6],
+                   'C': [3, 4, 10, 2, 4, 6]})
+    A   B   C
+0   1   4   3
+1   1   5   4
+2   1   2   10
+3   2   7   2
+4   2   4   4
+5   2   6   6
+```
+
+I would like to get:
+
+```
+    A   B   C
+0   1   2   10
+1   2   4   4
+```
+
+Please write a function `getMin` in Python, which takes DataFrame variable `df` as the argument (the columns are the same as the above example) and returns a dataframe according to my requirements.
+
+Function signature is: `getMin(df)`

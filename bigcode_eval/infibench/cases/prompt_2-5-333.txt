@@ -1,0 +1,36 @@
+I am using java 8
+I have a model class like:
+```java
+class Subject{
+    String sub;
+    Integer marks;
+    boolean status;
+    // getters & setters
+}
+```
+status may be true or false.
+Now if the status is false then I have to remove those objects from a subjects list.
+How to do it?
+
+Please write a function `removeFalseSubjects` in Java, which remove the objects from a subjects list if their status is false.
+The context of the function is:
+```java
+package main;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    private static class Subject{
+        String sub;
+        Integer marks;
+        boolean status;
+        // getters & setters
+    }
+    public static void removeFalseSubjects(List<Subject> subjects){
+        //You should implement here
+    }
+}
+```
+Please give me the whole function with body without context such as class definition or imports.
+Function signature is: `public static void removeFalseSubjects(List<Subject> subjects)`

@@ -1,0 +1,6 @@
+Each command runs a separate sub-shell, so the environment variables are not preserved and .bashrc is not sourced.
+
+You have to source your script manually in the same process where you run your command so it would be:
+
+CMD source /root/.bashrc && /workspace/launch.sh
+provided your launch.sh is an executable.

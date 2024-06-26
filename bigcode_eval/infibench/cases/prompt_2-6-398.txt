@@ -1,0 +1,26 @@
+I've configured my console application's Main like so
+```c#
+var services = new ServiceCollection()
+    .AddLogging(logging => logging.AddConsole())
+    .BuildServiceProvider();
+```
+And then I try to use it in another class like so
+```c#
+private readonly ILogger _logger;
+
+public MyClass(ILogger logger)
+{
+    _logger = logger;
+}
+
+public void MyFunc()
+{
+    _logger.Log(LogLevel.Error, "My Message");
+}
+```
+However, I'm getting the following exception:
+```c#
+System.InvalidOperationException: 'Unable to resolve service for type 'Microsoft.Extensions.Logging.ILogger'
+```
+
+How to solve this problem?

@@ -1,0 +1,36 @@
+I'm currently working with the PyTorch framework and trying to understand foreign code. I got an indices issue and wanted to print the shape of a list.
+The only way of doing so (as far as Google tells me) is to convert the list into a numpy array and then getting the shape with numpy.ndarray.shape().
+
+But trying to convert my list into an array, I got a ValueError: only one element tensors can be converted to Python scalars.
+
+My List is a converted PyTorch Tensor (list(pytorchTensor)) and looks somewhat like this:
+
+[
+tensor([[-0.2781, -0.2567, -0.2353,  ..., -0.9640, -0.9855, -1.0069],  
+        [-0.2781, -0.2567, -0.2353,  ..., -1.0069, -1.0283, -1.0927],  
+        [-0.2567, -0.2567, -0.2138,  ..., -1.0712, -1.1141, -1.1784],  
+        ...,  
+        [-0.6640, -0.6425, -0.6211,  ..., -1.0712, -1.1141, -1.0927],  
+        [-0.6640, -0.6425, -0.5997,  ..., -0.9426, -0.9640, -0.9640],  
+        [-0.6640, -0.6425, -0.5997,  ..., -0.9640, -0.9426, -0.9426]]),
+
+tensor([[-0.0769, -0.0980, -0.0769,  ..., -0.9388, -0.9598, -0.9808],  
+        [-0.0559, -0.0769, -0.0980,  ..., -0.9598, -1.0018, -1.0228],    
+        [-0.0559, -0.0769, -0.0769,  ..., -1.0228, -1.0439, -1.0859],  
+        ...,  
+        [-0.4973, -0.4973, -0.4973,  ..., -1.0018, -1.0439, -1.0228],  
+        [-0.4973, -0.4973, -0.4973,  ..., -0.8757, -0.9177, -0.9177],  
+        [-0.4973, -0.4973, -0.4973,  ..., -0.9177, -0.8967, -0.8967]]),
+
+tensor([[-0.1313, -0.1313, -0.1100,  ..., -0.8115, -0.8328, -0.8753],  
+        [-0.1313, -0.1525, -0.1313,  ..., -0.8541, -0.8966, -0.9391],  
+        [-0.1100, -0.1313, -0.1100,  ..., -0.9391, -0.9816, -1.0666],  
+        ...,  
+        [-0.4502, -0.4714, -0.4502,  ..., -0.8966, -0.8966, -0.8966],  
+        [-0.4502, -0.4714, -0.4502,  ..., -0.8115, -0.8115, -0.7903],  
+        [-0.4502, -0.4714, -0.4502,  ..., -0.8115, -0.7690, -0.7690]]),
+] 
+
+Please write a function `getSize` that takes list(pytorchTensor) variable `t` as argument (which is shown above) and return the size of each tensor in List.
+
+The signature of the function is `getSize(t)`

@@ -1,0 +1,32 @@
+# Corresponding to post https://stackoverflow.com/questions/53908405
+id: 3-12-538
+# for case self identificaton
+
+prompt_path: prompt_3-12-538.txt
+type: code debugging
+
+lang: dart
+
+grading:
+  max_score: 2.0
+  min_score: 0.0
+  blank_filling:
+    template: "The reason it didn't work is that this needs to be done inside a [blank], not at the top level.
+Another solution is to declare your map in Flutter with the keyword \"[blank]\"."
+    
+    blank_str: "[blank]"
+    # [optional] how blanks are represented in the template
+
+    # escape: " '\"\n`"
+    # [optional] list of characters to be pre-filtered for model responses for blanks, default: " '"·"
+
+    targets: 
+        - content:
+            or:
+              - content:
+                content: "method"
+                to_lower: true
+              - content:
+                content: "function"
+                to_lower: true
+        - "final"

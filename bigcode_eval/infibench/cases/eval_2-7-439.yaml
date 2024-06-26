@@ -1,0 +1,11 @@
+id: 2-7-439
+prompt_path: prompt_2-7-439.txt
+type: non-code debugging
+lang: php
+grading:
+  keywords:
+    - content:
+        content: "require[ :'\"]*\\{[\\S\\s]*ext-zip[ :'\"]*\\*"
+        regex: true
+
+

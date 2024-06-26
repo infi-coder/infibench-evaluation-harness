@@ -1,0 +1,12 @@
+When I execute the following dart code I am unable to recieve data and the error thrown is:
+Bad state: Cannot set the body fields of a Request with content-type "application/json".
+The code is:
+```dart
+Map<String,String> headers = {'Content-Type':'application/json','authorization':'Basic c3R1ZHlkb3RlOnN0dWR5ZG90ZTEyMw=='};
+
+var response = await post(Urls.getToken,
+        headers: headers,
+        body: {"grant_type":"password","username":"******","password":"*****","scope":"offline_access"},
+      );
+```
+How to fix it?

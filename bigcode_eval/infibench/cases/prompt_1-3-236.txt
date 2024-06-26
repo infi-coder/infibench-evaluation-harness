@@ -1,0 +1,2 @@
+I have set my linter for Python to Pylint, but I still get error messages from Jedi.
+I even went to settings.json and added the line `"python.linting.jediEnabled": false`, but the line, though present, is greyed out. What more can I do?

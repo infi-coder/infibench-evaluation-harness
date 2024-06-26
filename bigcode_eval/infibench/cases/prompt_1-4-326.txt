@@ -1,0 +1,30 @@
+I have strings like:
+
+```r
+string <- "1, 2, \"something, else\""
+```
+
+I want to use `tidyr::separate_rows()` with `sep==","`, but the comma inside the quoted portion of the string is tripping me up. I'd like to remove the comma between something and else (but only this comma).
+
+Here's a more complex toy example:
+
+```r
+string <- c("1, 2, \"something, else\"", "3, 5, \"more, more, more\"", "6, \"commas, are fun\", \"no, they are not\"")
+
+string
+#[1] "1, 2, \"something, else\""
+#[2] "3, 5, \"more, more, more\""
+#[3] "6, \"commas, are fun\", \"no, they are not\""
+```
+
+I want to get rid of all commas inside the embedded quotations. Desired output:
+
+```r
+[1] "1, 2, \"something else\""                  
+[2] "3, 5, \"more more more\""                  
+[3] "6, \"commas are fun\", \"no they are not\""
+```
+
+Please write a function `removeComma` in R, which takes a string variable `s` as arguments and returns what I need.
+
+Function signature is: `removeComma <- function(s)`

@@ -1,0 +1,16 @@
+I have a dataframe with 3 columns, like this:
+
+```  instrument_token   tradingsymbol   lot_size
+0                 123             xyz       1000
+1                 555             aaa        200
+2                  34             rst       2400
+3                 189              op        780
+```
+
+I want to search for "123" in `instrument_token` column and extract the related `tradingsymbol` "UBL20JANFUT".
+
+How do I do that?
+
+Please write a function `extractCellValue` in Python to achieve my requirements, which takes a DataFrame variable `df` (with three columns as I show in example), and a string `matchedString` needed to match as arguments and returns the cell value I needed in string.
+
+Function signature is: `extractCellValue(df, matchedString)`

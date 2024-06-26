@@ -168,3 +168,27 @@ evaluation*.json
 generations*.json
 
 playground/
+
+# Infibench items
+bin/tsc
+bin/tsserver
+bigcode_eval/infibench/*.key
+bigcode_eval/infibench/test.*
+__pycache__/
+bigcode_eval/infibench/tmp/
+bigcode_eval/infibench/result.*
+bigcode_eval/infibench/results/
+.idea/
+bigcode_eval/infibench/responses/
+bigcode_eval/infibench/batched_responses/
+.*
+bigcode_eval/infibench/package-lock.json
+bigcode_eval/infibench/package.json
+bigcode_eval/infibench/node_modules/
+bigcode_eval/infibench/bin/
+bigcode_eval/infibench/*.xlsx
+bigcode_eval/infibench/output.txt
+bigcode_eval/infibench/output*.txt
+bigcode_eval/infibench/sandbox/
+example.xlsx
+results/

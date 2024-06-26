@@ -1,0 +1,102 @@
+I am a beginner in learning code and am working on making a simple django site where users can write comments but I keep getting this error
+
+My urls.py
+
+```python
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("login", views.login_view, name="login"),
+    path("logout", views.logout_view, name="logout"),
+    path("register", views.register, name="register"),
+    path("profile/<str:name>/", views.profile, name="profile")
+]
+```
+
+views.py
+
+```python
+class NewPostForm(forms.Form):
+    title = forms.CharField(label="Title")
+    description = forms.CharField(widget=forms.Textarea)
+
+def index(request):
+    if request.method == "POST":
+        form = NewPostForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+            author = request.user
+
+            post = NewPost(title=title, description=description, author=author)
+            post.save()
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            return render(request, "network/index.html", {
+                "form": form
+            })
+
+    return render(request, "network/index.html", {
+        "form": NewPostForm(),
+        "posts": NewPost.objects.all()
+    })
+```
+
+models.py
+
+```python
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+
+class User(AbstractUser):
+    pass
+
+class NewPost(models.Model):
+    title = models.CharField(max_length=32)
+    description = models.CharField(max_length=256)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+```
+
+and my index.html
+
+```html
+{% extends "network/layout.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <div class="form-group">
+        <form method="post" action="{% url 'index' %}">
+            {% csrf_token %}
+            {{form | crispy}}
+            <button class="btn btn-primary"> Post </button>
+        </form>
+    </div>
+
+    {% for post in posts %}
+        <div class="card">
+            <div class="card-body"> Title: {{post.title}} </div>
+            <div class="card-body"> Description: {{post.description}}</div>
+            <p> {{post.author.username}} </p>
+            <div class="card-body">
+                <a href="{% url 'profile' post.author.username %}">
+                    @{{post.author.username}}
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+```
+
+But I keep getting
+
+```
+NoReverseMatch at / Reverse for 'profile' with arguments '('',)' not found. 1 pattern(s) tried: ['profile/(?P[^/]+)/$']
+```
+
+Please point and show (in MarkDown) which line in my codes is wrong.

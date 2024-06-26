@@ -1,0 +1,11 @@
+How to make an animation after hovering over the link by using Tailwind-CSS. I have tried using `:after`, but it didn't work out.
+
+This is my code:
+```html
+<a href="#" class="group text-sky-600 transition duration-300">
+    Link
+    <span class="block max-w-0 duration-500 h-0.5 bg-sky-600"></span>
+</a>
+```
+
+Could you help me to revise the above code to realize this? I prefer doing so with pure tailwind, without writing css.

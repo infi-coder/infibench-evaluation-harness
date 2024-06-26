@@ -1,0 +1,19 @@
+I know its possible to print RGB colored text like so:
+
+```python
+def colored(r, g, b, text):
+    return "\033[38;2;{};{};{}m{} \033[39m".format(r, g, b, text)
+
+
+text = "Hello, World"
+colored_text = colored(132, 204, 247, text)
+print(colored_text)
+```
+
+But, is there a way to print with RGB colored background?
+
+Cuz, as far as I know, there are a few kinda built-in background colors for printing. But I want to be able to use rgb codes and get the appropriate background color for the printed text.
+
+Please modify the above function to achieve my requirements.
+The function signature is `def colored(background_r, background_g, background_b, text):`
+You need only output the function without any extra comments.

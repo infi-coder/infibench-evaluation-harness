@@ -1,0 +1,34 @@
+I am trying to build an application which was built using java 8, now it's upgraded to java 11. I installed Java 11 in my **windows machine** and I use **IntelliJ IDEA 2017** as my IDE.
+
+I changed my system environment variables and set the
+
+```
+JAVA_HOME to C:\Program Files\Java\jdk-11.0.1
+```
+
+And added that to the `Path` variable.
+
+```
+C:\>java -version
+java version "11.0.1" 2018-10-16 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.1+13-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.1+13-LTS, mixed mode)
+```
+
+When I build my application in IntelliJ, this is what I get:
+
+```
+Information:java: Errors occurred while compiling module 'test-domain_main'
+Information: javac 1.8.0_171 was used to compile java sources
+Information:1/10/2019 4:21 PM - Compilation completed with 1 error and 0 warnings in 1s 199ms
+Error:java: invalid target release: 11
+```
+
+This is what I've tried so far:
+
+1. I changed `.idea/compiler.xml` target values from 8 to 11 but that didn't help. Also, verified the `Target bytecode version` in `settings > Build, Execution, Deployment > Compiler > Java Compiler` and all my modules are set to 11.
+2. Went to `file > Project Structure > SDKs *(currently I have 1.7 and 1.7 listed)* > Add new SDK > JDK >` After that, I selected `C:\Program Files\Java\jdk-11.0.1` But it errors out with "The selected directory is not a valid home for JDK"
+
+I am not sure if I installed the wrong JDK 11, because in my `C:\Program Files\Java\`, I see separate JDK and JRE folders for `1.7` and `1.8` but only JDK folder for `11.0.1`
+
+Or is it something else I need to change?

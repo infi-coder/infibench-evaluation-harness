@@ -1,0 +1,29 @@
+When an image is in a nested flexbox element with a width set and height: auto it is being stretched... the auto height is not working. Does something extra need to be added for this to work in Safari?
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container section:first-child {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.container img {
+  width: 125px;
+  height: auto;
+}
+```
+
+```html
+<div class="container">
+  <section>
+    <img src="https://via.placeholder.com/250">
+  </section>
+  <section>
+    <img src="https://via.placeholder.com/150">
+  </section>
+</div>
+```

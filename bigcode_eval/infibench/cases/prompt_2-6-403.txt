@@ -1,0 +1,17 @@
+I'm looking for the correct way to return JSON with a HTTP status code in my .NET Core Web API controller. My code is like this:
+```c#
+public ActionResult IsAuthenticated()
+{
+    return Ok(Json("123"));
+}
+```
+But the response from the server is weird:
+```json
+{
+    contentType:null,
+    serializerSettings:null,
+    statusCode:null,
+    value:"123"
+}
+```
+How to let the WebAPI controller return JSON with a HTTP status code?

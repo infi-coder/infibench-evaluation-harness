@@ -1,0 +1,45 @@
+I wrote a CSS file for my HTML Page but it make my page mess up. The stop button is behind the game frame.
+
+How should I move stop button at Top to properly align with begin button?
+
+For reference, here is my HTML code:
+
+```html
+<html>
+<head>
+    <link rel="icon" href="./arrows/clubbackground.jpg" type="image/gif" sizes="16x16">
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="jsRev.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>DDR-Project 1</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div id="BackgroundScene">
+  <div id="DanceScoreboard">
+    <div id="GameStopped"><button id="StartBtn" class="btnStyle" onclick="gameStarted=true;">Begin Game</button>
+      <br><br><br>
+      <div class="Status">Click Begin Game to start</div>
+    </div>
+    <div id="GameRunning"><button id="StopBtn" class="btnStyle" onclick="self.close()">Stop Game</button>
+      <div id="Status" class="Status"></div>
+    </div>
+    <div id="dancePoints" class="Points">Points Earned:
+      <div class="OutputText" id="CorrectCount">0</div>
+    </div>
+  </div>
+  <div class="stage"></div>
+  <!-- ENDS .STAGE -->
+  <div id="controls">
+    <img id="left" src="./arrows/staticLeft.png">
+    <img id="up" src="./arrows/staticUp.png">
+    <img id="down" src="./arrows/staticDown.png">
+    <img id="right" src="./arrows/staticRight.png">
+  </div>
+  <!-- ENDS #CONTROLS -->
+
+</body>
+</html>
+```
+
+You can just mention some general methods, like what to add to the html layout or what to add to the CSS.

@@ -1,0 +1,3 @@
+I am trying to install `gem install travis` to use `travis-cli`, but getting the error:
+package configuration for libffi is not found in macOS.
+Any help will be appreciated!

@@ -1,0 +1,9 @@
+id: 2-8-463
+prompt_path: prompt_2-8-463.txt
+type: code debugging
+lang: go
+grading:
+  keywords:
+    - content: 
+        content: "\\*A | \\*B[\\s]*some\\(\\) bool"
+        regex: true

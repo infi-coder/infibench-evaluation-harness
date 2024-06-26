@@ -1,0 +1,35 @@
+# Corresponding to post https://stackoverflow.com/questions/72336177
+id: 0-0-9
+# for case self identificaton
+
+prompt_path: prompt_0-0-9.txt
+# relative path to the prompt text
+
+type: code debugging
+# type: code completion
+# type: knowledge question-answering
+# question type, for later statistics
+
+lang: javascript
+# question language or area, for later statistics
+
+# full_score: 1.0
+# [optional] the full score of this case in the final suite report
+
+# null_score: 0.0
+# [optional]the score of providing no response
+
+grading:
+  
+  # max_score: float
+  # the maximum score within the test case for clipping purpose, if not specified, no maximum clipping
+  
+  # min_score: float
+  # the minimum score within the test case for clipping purpose, if not specified, no minimum clipping
+  
+  keywords:
+    - content:
+        # content: "app.get(\"/logout\", (req, res) => {\\s\\S*req.logout((req.user|\\s\\S*)\\s\\S*=>\\s\\S*function(\\s\\S*)\\s\\S*{\\s\\S*if (\\s\\S*) return next(\\s\\S*); \\s\\S*res.redirect(\"/\");\\s\\S*}\\s\\S*);\\s\\S*}\\s\\S*);"
+        # content: "app.get\\(\"/logout\", \\(req, res\\) => \\{\\s\\S*req.logout"
+        content: "app.get\\(\"/logout\", \\(req, res\\) => \\{[ \\t\\n]*req.logout\\((req.user|[ \\t\\n]*)[\\w \\t]*((function\\([\\w]*\\))|(=>))[ \\t]*\\{[\\s\\S]*res.redirect\\(\"/\"\\);"
+        regex: true

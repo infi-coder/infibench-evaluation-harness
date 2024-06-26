@@ -1,0 +1,35 @@
+I'm trying to find the best way to create this JSON object using Go:
+```json
+{
+  "Clients" : [
+    {
+      "Hostname" : "example.com",
+      "IP" : "127.0.0.1",
+      "MacAddr" : "mactonight"
+    },
+    {
+      "Hostname" : "foo.biz",
+      "IP" : "0.0.0.0",
+      "MacAddr" : "12:34:56:78"
+    }
+  ]
+}
+```
+Please write a struct `ClientInfo` in Go, which can be used for serialization. The code context is:
+```
+package main
+
+import (
+	"encoding/json"
+	"os"
+)
+
+func getASCIIAsString(asciiCode byte) string {
+	return string(asciiCode)
+}
+
+type ClientInfo struct {
+    //You should implement here
+}
+```
+Please give me only the declaration of `ClientInfo` without any other context such as imports.

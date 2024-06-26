@@ -1,0 +1,3 @@
+How to reinstall the latest cmake version?
+
+I would like to install cmake the latest version, on Linux environment. I have cmake version 3.5 installed and is not supported by some applications. I tried to upgrade it by uninstalling the current version. But when I reinstall with sudo apt-get install cmake, I get the same version 3.5 re-installed. How do I install the latest version with sudo apt-get install ....? 

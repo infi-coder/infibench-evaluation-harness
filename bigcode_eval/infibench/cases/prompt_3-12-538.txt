@@ -1,0 +1,17 @@
+How to add a new pair to Map in Dart? Code:
+```dart
+Map<String, int> someMap = {
+  "a": 1,
+  "b": 2,
+};
+
+someMap["c"] = 3;
+```
+I caught the following errors:
+- Variables must be declared using the keywords const, final, var, or a type name
+- Expected to find;
+- the name someMap is already defined
+Specifically, pelase don't add other text and repeat the following paragraph with [blank] filled:
+
+The reason it didn't work is that this needs to be done inside a [blank], not at the top level.
+Another solution is to declare your map in Flutter with the keyword \"[blank]\".

@@ -1,0 +1,16 @@
+I am writing typescript. I would like to specify a function that takes an array of objects as a parameter, but I don't have a particular type defined for the object (a sort of "anonymous type"):
+
+```typescript
+bagTotal = (products) => {
+ // function does stuff
+}
+```
+
+Actually, I would like to impose a strict type for `products` like this:
+```typescript
+bagTotal = (products: [{name: string, price: number, description: string}]) => {
+ // function does stuff
+}
+```
+
+But this is not right. Could you fix the definition for me?

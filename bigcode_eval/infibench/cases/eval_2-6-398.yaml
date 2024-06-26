@@ -1,0 +1,9 @@
+id: 2-6-398
+prompt_path: prompt_2-6-398.txt
+type: code debugging
+lang: c#
+grading:
+  keywords:
+    - content:
+        content: 'ILogger<[\\w ]*>'
+        regex: true

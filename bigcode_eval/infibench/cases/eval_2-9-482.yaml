@@ -1,0 +1,21 @@
+# Corresponding to post https://stackoverflow.com/questions/71332602
+id: 2-9-482
+prompt_path: prompt_2-9-482.txt
+type: non-code debugging
+lang: ruby
+
+grading:
+  max_score: 3.0
+  min_score: 0.0
+  blank_filling:
+    template: "You need to add Symbol to the [blank] in your case too when reading the YAML file.
+Or when using in Ruby on Rails, you can configure globally in your [blank].
+```
+config.active_record.[blank] += [Matrix, OpenStruct, Symbol]
+```"
+    
+    blank_str: "[blank]"
+    targets: 
+        - "permitted_classes"
+        - "config/application.rb"
+        - "yaml_column_permitted_classes"

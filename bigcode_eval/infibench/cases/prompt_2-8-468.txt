@@ -1,0 +1,6 @@
+How do I turn ascii number as string in Go?
+Please write a function `getASCIIAsString` in Go, which takes uint64 ASCII code and print the ASCII string of that code.
+
+Function signature is `func getASCIIAsString(asciiCode byte) string `
+
+You only need to output the function implementation itself without any other context.

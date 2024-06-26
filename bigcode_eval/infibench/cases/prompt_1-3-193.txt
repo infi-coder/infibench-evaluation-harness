@@ -1,0 +1,13 @@
+```python
+from selenium import webdriver;
+browser= webdriver.Firefox();
+browser.get('http://www.seleniumhq.org');
+```
+
+When I try to run this code, it gives me an error message:
+
+```
+Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line.
+```
+
+What should I do?

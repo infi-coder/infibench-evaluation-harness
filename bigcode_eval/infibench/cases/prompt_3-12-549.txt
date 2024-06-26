@@ -1,0 +1,5 @@
+How to copy list values to another list in flutter?
+In my case, I want to copy values from mynewlist to mylist.
+Specifically, please don't add other text and repeat the following paragraph with [blank] filled:
+
+Use ```[blank] = List.[blank](mynewlist)```

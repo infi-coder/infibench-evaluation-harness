@@ -1,0 +1,5 @@
+I'm trying to install devise in the rails version I get the error of the latest version of devise:
+```
+/usr/local/bundle/gems/devise-4.8.0/lib/devise.rb:321:in `ref': undefined method `reference' for ActiveSupport::Dependencies:Module (NoMethodError)
+```
+How to fix it?

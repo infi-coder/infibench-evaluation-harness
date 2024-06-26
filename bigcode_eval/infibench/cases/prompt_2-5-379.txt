@@ -1,0 +1,29 @@
+If we want to check the datatype of variable in javascript, we can use `typeof` operator .
+
+Consider this snippet
+
+```javascript
+var c = 'str' ;
+console.log(typeof(c)); // string
+c = 123 ;
+console.log(typeof(c)); // number
+c =  {} ;
+console.log(typeof(c)) ; // object
+```
+
+I want to achieve the same functionality in `Java 8` . Java does not have typeof operator but there's the `instanceof` operator to check the types.
+
+```java
+System.out.println("str" instanceof String);  // true
+
+Integer a  = 12 ;
+System.out.println(a instanceof Integer);
+
+
+Float f = 12.3f
+System.out.println(f instanceof Float); // true
+```
+
+Can we do any better ? Plus `instanceof` does not support primitive types .
+
+Is there any approaches in `java 8` ? Any relevant approaches will be appreciated.

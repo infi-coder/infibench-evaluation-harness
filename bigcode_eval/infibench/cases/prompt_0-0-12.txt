@@ -1,0 +1,30 @@
+The code below is perfect to send emails using node.js code/program. However, I am still getting error `Error: Invalid login: 535-5.7.8 Username and Password not accepted`.
+
+```javascript
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'haideryaqoobengr@gmail.com',
+    pass: '**********'
+  }
+});
+
+var mailOptions = {
+  from: 'haideryaqoobengr@gmail.com',
+  to: 'haideryaqoob720@gmail.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+```
+
+Could you tell me how to fix this?

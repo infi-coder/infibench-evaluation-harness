@@ -1,0 +1,3 @@
+Has anyone found if there is a way (e.g., check CSS styles) to detect if the user's system is in the new OS X Dark Mode in Safari/Chrome/Firefox?
+
+We would like to change our site's design to be dark-mode friendly based on the current operating mode.

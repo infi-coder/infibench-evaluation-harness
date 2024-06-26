@@ -1,0 +1,22 @@
+id: 2-5-341
+prompt_path: prompt_2-5-341.txt
+type: code debugging
+lang: java
+grading:
+  keywords:
+    - content:
+        or:
+          - "application/xml"
+          - "application/json"
+          - content: "jackson"
+          - content:
+              and:
+                - content:
+                    or:
+                      - content: "xml"
+                      - content: "json"
+                - content:
+                    or:
+                      - content: "dependency"
+                      - content: "dependencies"
+      to_lower: True

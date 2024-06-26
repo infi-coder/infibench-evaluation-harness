@@ -1,0 +1,17 @@
+# Corresponding to post https://stackoverflow.com/questions/63121776
+id: 2-11-517
+prompt_path: prompt_2-11-517.txt
+type: knowledge question-answering
+
+lang: c++/c
+
+grading:
+  max_score: 1.0
+  min_score: 0.0
+  keywords:
+    - content: 
+        or:
+          - "format"
+          - "Sprintf"
+      weight: 1.0
+      to_lower: true

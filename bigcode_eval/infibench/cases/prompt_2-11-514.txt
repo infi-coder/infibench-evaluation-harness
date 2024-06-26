@@ -1,0 +1,23 @@
+Please write a function ```fun``` in C++ that can take multiple parameters of the same type (struct Foo in the following example), passed in as a template. The number of arguments is known in compile time.
+There are two constraints: 1. no heap memory allocations. 2. no va_args.
+The C++ version is C++14 or new versions.
+```c++
+struct Foo
+{
+    int a, b, c;
+};
+
+template <uint32_t argsCount, typename T>
+void fun(T ...args) // max number of args == argsCount
+{
+    // ...
+    // std::array<T, argsCount>{ args... };
+}
+
+int main()
+{
+    fun<3, Foo>( { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } );
+    return 0;
+}
+```
+Replace the function ```fun``` with your implementation.

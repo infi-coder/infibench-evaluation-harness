@@ -1,0 +1,11 @@
+How can I tell if a specified folder is in my PATH using PowerShell?
+
+How can I tell if a specified folder is in my PATH using PowerShell?
+A function like this would be great:
+```
+bash
+function FolderIsInPATH($Path_to_directory) {
+    # If the directory is in PATH, return true, otherwise false
+}
+```
+

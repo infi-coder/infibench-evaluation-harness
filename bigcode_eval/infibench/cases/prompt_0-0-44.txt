@@ -1,0 +1,33 @@
+How do I create an index of property in mongoose schema using Nest.js?
+
+I tried to add index as a property option, But the index hasn't been created:
+
+```javascript
+@Schema()
+export class Schema extends Document {
+
+  @Prop()
+  _id: string;
+
+  @Prop({required: true, index: true})
+  type: string;
+
+  @Prop()
+  creationDate: string;
+
+  @Prop()
+  name: string;
+}
+
+export const MySchema = SchemaFactory.createForClass(Schema);
+```
+
+I tried this way too:
+
+```javascript
+export const MySchema = SchemaFactory.createForClass(Schema).index({ type: 1 });
+```
+
+Both doesn't work as expected.
+
+What is the way to do that?

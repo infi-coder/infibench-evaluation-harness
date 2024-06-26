@@ -1,0 +1,41 @@
+Is there a simple way remove duplicate elements from an array?
+I want to remove duplicate elements from an array and I have implement two ways:
+```rust
+use itertools::Itertools;
+use std::collections::HashSet;
+
+#[derive(Debug)]
+struct Person {
+    name: String,
+    age: u32,
+}
+
+fn main() {
+    let arr = [
+        Person { name: "aaa".to_string(), age: 10 },
+        Person { name: "bbb".to_string(), age: 20 },
+        Person { name: "bbb".to_string(), age: 20 },
+        Person { name: "ccc".to_string(), age: 30 },
+    ];
+
+    // Way 1:
+    let arr2 = {
+        let names: Vec<_> = arr.iter().map(|v| v.name.clone()).unique().collect();
+        names
+            .iter()
+            .map(|name| arr.iter().find(|person| &person.name == name).unwrap())
+            .collect::<Vec<_>>()
+    };
+    dbg!(arr2);
+
+    // Way 2:
+    let arr2 = {
+        let mut names = HashSet::new();
+        arr.iter()
+            .filter(|p| names.insert(p.name.clone()))
+            .collect::<Vec<_>>()
+    };
+    dbg!(arr2);
+}
+``` 
+Way 2 is simple compared to way 1, but is there anything simpler?

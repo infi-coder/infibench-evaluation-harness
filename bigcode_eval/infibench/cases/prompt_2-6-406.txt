@@ -1,0 +1,9 @@
+I try to create a .NET 6 Console Application but having troubles reading my appsettings.json file. In a web application I could use this:
+```c#
+var builder = WebApplication.CreateBuilder(args);
+```
+But what would I use in a console application? I get this error when trying to add it to program.cs.
+```
+"The name 'WebApplication' does not exist in the current context"
+```
+How to solve this?

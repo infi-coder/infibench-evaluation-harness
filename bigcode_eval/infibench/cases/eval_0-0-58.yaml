@@ -1,0 +1,64 @@
+# Corresponding to post https://stackoverflow.com/questions/47545940
+id: 0-0-58
+# for case self identificaton
+
+prompt_path: prompt_0-0-58.txt
+# relative path to the prompt text
+
+type: non-code debugging
+# type: code completion
+# type: knowledge question-answering
+# question type, for later statistics
+
+lang: javascript
+# question language or area, for later statistics
+
+# full_score: 1.0
+# [optional] the full score of this case in the final suite report
+
+# null_score: 0.0
+# [optional]the score of providing no response
+
+grading:
+  
+  max_score: 5.0
+  # the maximum score within the test case for clipping purpose, if not specified, no maximum clipping
+  
+  # min_score: float
+  # the minimum score within the test case for clipping purpose, if not specified, no minimum clipping
+  
+  keywords:
+    - npm cache verify
+    - npm install -g create-react-app
+    - npm cache clean --force
+    - content:
+        and:
+          - or:
+            - content: "delet.*"
+              regex: true
+            - content: "remov.*"
+              regex: true
+            - content: "rm"
+          - content: npm-cache
+          - content: npm install
+    - npm i -g npm
+    - content: 
+        or:
+          - content: "delet.* package-lock\\.json"
+            regex: true
+          - content: "remov.* package-lock\\.json"
+            regex: true
+          - content: "rm.*package-lock.json"
+            regex: true
+    - content: 
+        or:
+          - content: "delet.* _cacache"
+            regex: true
+          - content: "remov.* _cacache"
+            regex: true
+          - content: "rm.*_cacache"
+            regex: true
+    - content:
+        and:
+          - content: proxy
+          - content: .npmrc

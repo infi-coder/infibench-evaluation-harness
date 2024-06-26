@@ -1,0 +1,29 @@
+I'm trying to understand the usage of the type union constraint in Go generics (v1.18). Here is the code I tried:
+```go
+type A struct {
+}
+
+type B struct {
+}
+
+type AB interface {
+    *A | *B
+}
+
+func (a *A) some() bool {
+    return true
+}
+
+func (b *B) some() bool {
+    return false
+}
+
+func some[T AB](x T) bool {
+    return x.some()   // <- error
+}
+```
+The compiler complains:
+```
+x.some undefined (type T has no field or method some)
+```
+How to change the code?

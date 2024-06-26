@@ -1,0 +1,19 @@
+id: 2-7-427
+prompt_path: prompt_2-7-427.txt
+type: code debugging
+lang: php
+grading:
+  max_score: 2.0
+  keywords:
+    - content:
+        or:
+        - 'MAIL_ENCRYPTION=""'
+        - "MAIL_ENCRYPTION=''"
+    - content:
+        or:
+        - "'encryption' => env('MAIL_ENCRYPTION', '')"
+        - '"encryption" => env("MAIL_ENCRYPTION", "")'
+    - content:
+        and:
+        - content: MAIL_ENCRYPTION
+        - content: tls

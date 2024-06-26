@@ -1,0 +1,1 @@
+I don't seem to be able to connect to Heroku Redis using TLS on Node. Does anyone have a working example? Should I be using REDIS_URL or REDIS_TLS_URL? I'm using node_redis v3.

@@ -1,0 +1,135 @@
+I'm trying to upgrade a project from SpringCloud BOM `2020.0.1` to `2020.0.2`
+
+When I change the BOM and re-build, I get an error in JUnit tests, saying that the new parameter `spring.config.import` is not set for configserver.
+
+This project is not a ConfigServer, neither use ConfigServer (commented config client)
+
+This is the reported error in tests `contextLoads()`
+
+```
+java.lang.IllegalStateException: Failed to load ApplicationContext
+    at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
+    at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
+    at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118)
+    .. Many more
+Caused by: org.springframework.cloud.config.client.ConfigServerConfigDataMissingEnvironmentPostProcessor$ImportException: No spring.config.import set
+    at org.springframework.cloud.config.client.ConfigServerConfigDataMissingEnvironmentPostProcessor.postProcessEnvironment(ConfigServerConfigDataMissingEnvironmentPostProcessor.java:60)
+    at org.springframework.boot.env.EnvironmentPostProcessorApplicationListener.onApplicationEnvironmentPreparedEvent(EnvironmentPostProcessorApplicationListener.java:100)
+    at org.springframework.boot.env.EnvironmentPostProcessorApplicationListener.onApplicationEvent(EnvironmentPostProcessorApplicationListener.java:86)
+    ... Many more
+```
+
+This is my build.gradle
+
+```
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example.microservices.composite.product'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://repo.spring.io/milestone'
+    }
+}
+
+ext {
+   // resilience4jVersion = "1.7.0"
+   resilience4jVersion = "1.6.1"
+
+}
+
+dependencies {
+    // Local projects dependencies
+    implementation project(':api')
+    implementation project(':util')
+
+    // Implementations dependencies
+    // Standard (actuator - for monitoring and Health)
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    // WebFlux (asynchronous Web)
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    // SpringFox dependencies
+    implementation "io.springfox:springfox-boot-starter:3+"
+    implementation('io.springfox:springfox-spring-webflux:3+')
+
+    // Implementation: Spring cloud
+    implementation('org.springframework.cloud:spring-cloud-starter-config')
+    implementation('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
+    implementation('org.springframework.cloud:spring-cloud-starter-stream-kafka')
+
+    // Security
+    implementation('org.springframework.boot:spring-boot-starter-security')
+    implementation('org.springframework.security:spring-security-oauth2-resource-server')
+    implementation('org.springframework.security:spring-security-oauth2-jose')
+
+    // CircuitBreaker with Resilience4J
+    implementation("io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}")
+    implementation("io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}")
+
+    // Implementation: Tracing
+    implementation('org.springframework.cloud:spring-cloud-starter-sleuth')
+
+    // Implementation: Performance metrics
+    implementation("io.micrometer:micrometer-registry-prometheus")
+
+    // TEST dependencies
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
+
+}
+
+
+dependencyManagement {
+    imports {
+        // mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2020.0.1'
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.2"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+```
+
+And my contextLoads() method in test class is trivial
+
+```java
+// Test: Application
+@AutoConfigureWebTestClient
+@SpringBootTest(
+    webEnvironment = WebEnvironment.RANDOM_PORT,
+    classes = {
+        ProductCompositeServiceApplication.class,
+        TestSecurityConfig.class },
+    properties = {
+        "spring.main.allow-bean-definition-overriding=true" })
+
+    @Test
+    public void contextLoads() {
+    }
+}
+```
+
+NOTE: I have also tried defining the  'spring.config.import' property to empty or none in the class, with no change
+
+```java
+@SpringBootTest(
+    webEnvironment = WebEnvironment.RANDOM_PORT,
+    classes = {
+        ProductCompositeServiceApplication.class,
+        TestSecurityConfig.class },
+    properties = {
+        "spring.main.allow-bean-definition-overriding=true",
+        "spring.config.import=" })
+```

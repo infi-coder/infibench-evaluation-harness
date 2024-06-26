@@ -1,0 +1,13 @@
+I want to inject this interface to my controllers:
+```c#
+public interface IDatabaseService<T>
+{
+    IEnumerable<T> GetList();
+    ...
+}
+```
+But this is a generic interface. When I try to ineject in my Startup.cs, I'll have to pass a generic type like this (which is not feasible):
+```c#
+services.AddScoped<IDatabaseService<T>>();
+```
+So what is the correct C# code to inject a generic interface?

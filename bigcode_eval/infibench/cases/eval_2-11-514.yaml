@@ -1,0 +1,17 @@
+# Corresponding to post https://stackoverflow.com/questions/72647311
+id: 2-11-514
+prompt_path: prompt_2-11-514.txt
+type: code completion
+
+lang: c++/c
+
+grading:
+  
+  max_score: 1.0
+  min_score: 0.0
+
+  unit_test:
+    lang: c++
+    tests:
+      - path: test_2-11-514.cpp
+        weight: 1.0

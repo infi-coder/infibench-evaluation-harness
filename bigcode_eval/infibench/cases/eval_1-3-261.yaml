@@ -1,0 +1,33 @@
+# Corresponding to post https://stackoverflow.com/questions/68680322
+id: 1-3-261
+# for case self identificaton
+
+prompt_path: prompt_1-3-261.txt
+# relative path to the prompt text
+
+# type: code debugging
+# type: code completion
+# type: knowledge question-answering
+type: non-code debugging
+# question type, for later statistics
+
+lang: python
+# question language or area, for later statistics
+
+# full_score: 1.0
+# [optional] the full score of this case in the final suite report
+
+# null_score: 0.0
+# [optional]the score of providing no response
+
+grading:
+
+  keywords:
+    - content:
+        or:
+          - content: pip3? install --upgrade pytube
+            regex: true
+          - content: pip3? install pytube --upgrade
+            regex: true
+          - content: conda install pytube --upgrade
+          - content: conda install --upgrade pytube

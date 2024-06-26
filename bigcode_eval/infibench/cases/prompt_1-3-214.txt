@@ -1,0 +1,39 @@
+I'm trying to run a Profile Report for EDA in conda Jupyter NB, but keep getting errors.
+Here is my code thus far:
+
+```python
+    import pandas_profiling
+    from pandas_profiling import ProfileReport
+
+    profile = ProfileReport(data)
+```
+
+and
+
+```python
+    profile = pandas_profiling.ProfileReport(data)
+```
+
+both of which produce:
+
+```bash
+TypeError: concat() got an unexpected keyword argument 'join_axes'
+```
+
+Research recommended upgrading to Pandas 1.0, which I'm using.
+
+Also tried
+
+```python
+    data.profile_report()
+```
+
+and I get
+
+```bash
+AttributeError: 'DataFrame' object has no attribute 'profile_report'
+```
+
+Any tips on where I am going wrong?
+
+How to solve this problem?

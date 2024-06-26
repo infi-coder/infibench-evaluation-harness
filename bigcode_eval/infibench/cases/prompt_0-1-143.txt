@@ -1,0 +1,1 @@
+Firefox Proton increased the menu item spacing to levels that displease me. I heard this kind of problem can often be solved by modifying CSSes internal to Firefox. Which CSS should I change, and how, to reduce the spacing between menu items?

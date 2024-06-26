@@ -1,0 +1,9 @@
+I am completely new to `openpyxl` so, as you can imagine, I am having pretty hard times when I try to make use of it.
+
+I have an Excel report that contains only one sheet (called `Sheet1`). I'd like to search all cells for those that contain specific string (product name `ABC` in this case).
+
+Then I would like to copy contents of every cell in the rows that contain cell with ABC product name. And assign every cell to a variable.
+
+Please write a function `filterExcelRows` in python, which takes `filePath` and `matchedString` as arguments and returns the indexes of the rows that contain `matchedString` in `List`.
+
+Function signature is: `filterExcelRows(filePath, matchedString)`

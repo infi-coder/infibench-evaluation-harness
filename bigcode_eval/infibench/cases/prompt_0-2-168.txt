@@ -1,0 +1,3 @@
+I see people recommending that whenever one uses `target="_blank"` in a link to open it in a different window, they should put `rel="noopener noreferrer"` to prevent the targetblank vulnerability. Is it still a vulnerability in major browsers after 2021? You only need to reply "Yes" or "No" after "Answer:".
+
+Answer: 

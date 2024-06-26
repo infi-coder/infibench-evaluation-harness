@@ -1,0 +1,11 @@
+macOS Catalina 10.15(beta) - Why is ~/.bash_profile not sourced by my shell?
+
+I want to set the environment variable I added below the line to `~/.bash_profile` and `~/.profile` but it didn't work.
+
+```
+export JBOSS_HOME=/Users/{USERNAME}/Desktop/jboss7
+```
+
+
+Afterward, exit the terminal and open it again when executing `echo $JBOSS_HOME` I get nothing.
+

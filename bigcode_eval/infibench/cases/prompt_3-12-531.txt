@@ -1,0 +1,13 @@
+Here is a snippet written in dart:
+```dart
+void foo(Map<int, String> myMap) {
+  if (myMap.containsKey(1)) {
+    String s = myMap[1];
+  }
+}
+```
+This snippet give me the warning:
+```
+A value of type 'String?' can't be assigned to a variable of type 'String'. Try changing the type of the variable, or casting the right-hand type to 'String'.
+```
+How to solve the warning?

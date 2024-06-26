@@ -1,0 +1,13 @@
+I am using Angular to get geolocation. If the locaton is available, I would like to `console.log("Location accessed")`; otherwise `console.log("User not allowed")`. I tried the following code but it doesn't work.
+
+```javascript
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+        console.log("Location accessed");
+    });
+} else {
+    console.log("User not allowed")
+}
+```
+
+Could you help me to revise the above code to make it work? You don't need to add other contextual code.

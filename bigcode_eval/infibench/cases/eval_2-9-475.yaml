@@ -1,0 +1,18 @@
+# Corresponding to post https://stackoverflow.com/questions/63650689
+id: 2-9-475
+prompt_path: prompt_2-9-475.txt
+type: non-code debugging
+lang: ruby
+# question language or area, for later statistics
+
+grading:
+  max_score: 2.0
+  min_score: 0.0
+  keywords:
+    - content: 
+        or:
+          - "gem install"
+          - "brew"
+      weight: 1.0
+    - content:
+        content: "cocoapods"

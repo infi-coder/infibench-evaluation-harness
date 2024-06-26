@@ -1,0 +1,14 @@
+Why doesn't nested parameter expansion work correctly in GitLab CI/CD?
+
+Using a `bash` runner, is there any reason why the following variable expansion shouldn't work?
+```
+variables:
+  GIT_BRANCH: "${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME:-${CI_COMMIT_BRANCH:-$CI_DEFAULT_BRANCH}}"
+
+job1:
+  script:
+    - echo $GIT_BRANCH
+```
+
+The job outputs `}`.
+I'm using GitLab Enterprise Edition 14.1.8-ee.

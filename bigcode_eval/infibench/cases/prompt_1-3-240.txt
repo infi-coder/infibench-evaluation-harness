@@ -1,0 +1,7 @@
+I have two data frames df1 and df2, where df2 is a subset of df1. How do I get a new data frame (df3) which is the difference between the two data frames?
+
+In other word, a data frame that has all the rows/columns in df1 that are not in df2?
+
+Please write a function `getDifference` in Python, which takes `df1` and `df2` as arguments and returns their differences in DataFrame.
+
+Function signature is: `getDifference(df1, df2)`

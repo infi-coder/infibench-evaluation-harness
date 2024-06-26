@@ -1,0 +1,12 @@
+I'm using C# to develop an ASP.NET project. After upgrading ASP.NET Core 5.0 with IdentityServer4 to 6.0, I got the following error:
+
+```
+14:50:02.0033786|Failed executing DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "k"."Id", "k"."Algorithm", "k"."Created", "k"."Data", "k"."DataProtected", "k"."IsX509Certificate", "k"."Use", "k"."Version"
+FROM "Keys" AS "k"
+WHERE "k"."Use" = 'signing'
+14:50:02.0179085|An exception occurred while iterating over the results of a query for context type 'xx.com.Data.AppDbContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such table: Keys'.
+```
+
+How to solve this problem using C#?

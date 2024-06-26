@@ -1,0 +1,3 @@
+How can I distinguish between high- and low-performance cores/threads in C++?
+Is there a way to query std::thread‘s properties and enforce on which cores they’ll run in C++?
+Please answer "Yes" or "No" first and give the reasons.

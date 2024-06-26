@@ -1,0 +1,32 @@
+I have a form in one of my React components, and in the outside component that calls it I want to pass a reference to a button there, so that I can also submit that using that button.
+
+To make it more clear I have the following:
+
+```javascript
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+class CustomForm extends Component {
+  render() {
+    return (
+      <form id='my-form' onSubmit={alert('Form submitted!')}>
+        <button type='submit'>Inside Custom</button>
+      </form>
+    );
+  }
+}
+
+function App() {
+  return (
+    <div>
+      <CustomForm />
+      <button>In Root</button>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+```
+
+Now, I can submit the form using the button titled 'Inside Custom', but I also want to be able to submit the form using the button titled 'In Root'. Is there a way to somehow pass reference from that button to that custom component, and actually submit the form when 'In Root' button is clicked? Specifically, could you change the 'In Root' button definition to accomplish this goal?

@@ -1,0 +1,5 @@
+I'm working on Ubuntu 19.10 and I decide to upgrade my OS to new version. However, after upgrading finished, I find any rails command not works and this error is shown to me:
+```
+in `require': libffi.so.6: cannot open shared object file: No such file or directory - /home/ace/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/ffi-1.13.1/lib/ffi_c.so (LoadError)
+```
+How to fix it?

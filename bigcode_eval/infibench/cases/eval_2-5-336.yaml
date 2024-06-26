@@ -1,0 +1,9 @@
+id: 2-5-336
+prompt_path: prompt_2-5-336.txt
+type: code completion
+lang: java
+grading:
+  unit_test:
+    tests:
+      - prefix_path: 'test_2-5-336/main/prefix.java'
+        path: 'test_2-5-336/main/assertions.java'

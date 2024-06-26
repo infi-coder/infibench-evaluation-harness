@@ -1,0 +1,7 @@
+id: 2-8-453
+prompt_path: prompt_2-8-453.txt
+type: code debugging
+lang: go
+grading:
+  keywords:
+    - 'package-level variable'

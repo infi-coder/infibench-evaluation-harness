@@ -1,0 +1,19 @@
+id: 2-5-346
+prompt_path: prompt_2-5-346.txt
+type: non-code debugging
+lang: java
+grading:
+  keywords:
+    - content:
+        and:
+          - content: "17"
+          - content:
+              or:
+                - content:
+                    and:
+                      - content: "Build tools"
+                      - content: "Build, Execution, Deployment"
+                      - content: "Gradle"
+                - content: "JavaLanguageVersion.of(17)"
+                - content: "targetCompatibility"
+      to_lower: true

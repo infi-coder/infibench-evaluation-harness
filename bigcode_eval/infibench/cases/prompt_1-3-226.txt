@@ -1,0 +1,64 @@
+I have a string like below in python
+
+```
+testing_abc
+```
+
+I want to split string based on _ and extract the second element
+
+I have done like below
+
+```python
+split_string = string.split('_')[1]
+```
+
+I am getting the correct output as expected
+
+```
+abc
+```
+
+Now I want this to work for below strings
+
+```
+xyz
+```
+
+When I use
+
+```python
+split_string = string.split('_')[1]
+```
+
+I get below error
+
+```
+list index out of range
+```
+
+expected output I want is xyz
+
+For the below string
+
+```
+testing_abc_bbc
+```
+
+When I use
+
+```python
+split_string = string.split('_')[1]
+```
+
+I get `abc` as output
+
+expected output I want is `abc_bbc`
+
+Basically What I want is
+
+1) If string contains `_` then print everything after the first `_` as variable
+2) If string doesn't contain `_` then print the string as variable
+
+Please write a function `splitOne` with a string `s` as the argument and returns the string I need.
+
+The signature of the function is `splitOne(s)`

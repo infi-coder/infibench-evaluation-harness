@@ -1,0 +1,12 @@
+I am trying to replace our current backend service using Nestjs library, however, I want to create a route with 2 optional parameters in the URL something like:
+
+`/route/:param1/config/:OptionalParam3?/:OptionalParam3?`
+
+that means the route should catch:
+
+- `route/aa/config`
+- `route/aa/config/bb`
+- `route/aa/config/bb/cc`
+
+
+Could you help me to revise the above route pattern to fulfill the requirement? You should only output the generated pattern string and enclose the generated pattern with "```".

@@ -1,0 +1,20 @@
+id: 2-5-362
+prompt_path: prompt_2-5-362.txt
+type: non-code debugging
+lang: java
+grading:
+  keywords:
+    - content:
+        or:
+          - content:
+              and:
+                - 'spring'
+                - 'cloud'
+                - 'config'
+                - 'enabled'
+                - 'false'
+          - content: '<artifactId>spring-cloud-starter-bootstrap</artifactId>'
+          - content:
+              and:
+                - "implementation 'org.springframework.cloud:spring-cloud-starter-config'"
+                - "implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'"

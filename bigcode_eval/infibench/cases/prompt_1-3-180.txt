@@ -1,0 +1,24 @@
+hi im working with dataset in pandas. lets say the dataset having ID, TEST_TYPE, TEST_STATUS, TEST_DATE, etc
+
+i need to group a kind of column so first i try
+```python
+data_useless[['TEST_TYPE', 'TEST_STATUS']].groupby('TEST_STATUS').count_values()
+```
+and it worked : showing the result of grouped data by test_status(FAILED TEST and PASS TEST) and count value of that data on dataset
+
+now i want to know and see the data more from the PASS TEST
+
+so i tried
+```python
+data_useless.groupby(['TEST_STATUS'] == 'PASS TEST')
+```
+and it not working.. showing error, it say KEY ERROR : FALSE
+
+i need to do something like in sql :
+```sql
+SELECT *
+FROM data_useless
+WHERE TEST_STATUS = "PASS TEST"
+group by TEST_STATUS;
+```
+Please tell me how to write the python codes.

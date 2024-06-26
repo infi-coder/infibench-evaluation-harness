@@ -1,0 +1,10 @@
+I'm facing an issue where the generic implementation of TResponse and TRequest is not enough. For example, I need
+```c#
+PipelineBehavior<RequestOne, ResponseOne>
+```
+to do a specific logic for the requestOne, and another
+```c#
+PipelineBehavior<RequestTwo, ResponseTwo>
+```
+to do another logic that doesn't apply to request one.
+I wonder if having two separate pipelines for two very specific request is a bad practice.

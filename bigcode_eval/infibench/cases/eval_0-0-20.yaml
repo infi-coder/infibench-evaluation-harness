@@ -1,0 +1,25 @@
+# Corresponding to post https://stackoverflow.com/questions/52321539
+id: 0-0-20
+# for case self identificaton
+
+prompt_path: prompt_0-0-20.txt
+# relative path to the prompt text
+
+type: code debugging
+# type: code completion
+# type: knowledge question-answering
+# question type, for later statistics
+
+lang: javascript
+# question language or area, for later statistics
+
+# full_score: 1.0
+# [optional] the full score of this case in the final suite report
+
+# null_score: 0.0
+# [optional]the score of providing no response
+
+grading:
+  
+  keywords:
+    - content: "styled.li`\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 100px;\n  margin: 1px;\n  font-size: 3em;\n  color: ${props => (props.isSelected ? `white` : `black`)};\n  background-color: ${props => (props.isSelected ? `black` : `#C4C4C4`)};\n  cursor: ${props => (props.isSelected ? 'default' : `pointer`)};\n`"

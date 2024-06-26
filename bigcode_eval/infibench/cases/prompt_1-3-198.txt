@@ -1,0 +1,16 @@
+I searched similar questions about reading csv from URL but I could not find a way to read csv file from google drive csv file.
+
+My attempt:
+
+```python
+import pandas as pd
+
+url = 'https://drive.google.com/file/d/0B6GhBwm5vaB2ekdlZW5WZnppb28/view?usp=sharing'
+dfs = pd.read_html(url)
+```
+
+How can we read this file in pandas?
+
+Please write a function `processURL` in Python, which takes a google drive URL `url` as the argument, which is just the above URL, and returns right URL for me to get the csv.
+
+Function signature is: `processURL(url)`

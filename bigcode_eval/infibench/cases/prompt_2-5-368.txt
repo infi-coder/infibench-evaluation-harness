@@ -1,0 +1,1 @@
+How to enable Dev Tools project on IntelliJ 2021.2 usinv maven and observe the changes in code without having to restart the Tomcat server?

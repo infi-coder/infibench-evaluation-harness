@@ -1,0 +1,13 @@
+Read-only file system when attempting mkdir /data/db on Mac
+
+I am trying to create a new folder in the main directory 
+
+Tried all kinds of examples
+
+`sudo mkdir /data/db` 
+
+`sudo mkdir -p /data/db` 
+
+I keep getting 
+
+> mkdir: /data: Read-only file system

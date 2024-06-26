@@ -1,0 +1,22 @@
+I'm wading through a codebase full of code like this:
+```rust
+if let Some(i) = func1() {
+    if let Some(j) = func2(i) {
+        if let Some(k) = func3(j) {
+            if let Some(result) = func4(k) {
+                // Do something with result
+            } else {
+                println!("func 4 returned None");
+            }
+        } else {
+            println!("func 3 returned None");
+        }
+    } else {
+        println!("func 2 returned None");
+    }
+} else {
+    println!("func 1 returned None");
+}
+```
+The problem is that the above code is an ugly and unreadable.
+Is there really not a better way to do this? I want to refactor the above into something that has a cleaner, flatter structure where everything appears in a sensible order.

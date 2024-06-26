@@ -1,0 +1,34 @@
+When I run
+```
+bin/console doctrine:migrations:list
+```
+I see the Migration listed as:
+```
+Application\Migrations\Version20210909072642
+```
+I am attempting to rollback a migration and I have tried a few different versions:
+```
+bin/console --env=dev doctrine:migrations:execute 'Application\DoctrineMigrations\Version20210909072642' --down --no-interaction -vvv
+bin/console --env=dev doctrine:migrations:execute Version20210909072642 --down --no-interaction -vvv
+bin/console --env=dev doctrine:migrations:execute 20210909072642 --down --no-interaction -vvv
+```
+
+Every time I run it I get the following error:
+```
+In MigrationClassNotFound.php line 15:
+
+  [Doctrine\Migrations\Exception\MigrationClassNotFound]
+  Migration class "20210909072642" was not found?
+```
+
+My Doctrine config looks like this:
+```
+doctrine_migrations:
+    migrations_paths:
+        'Application\Migrations': 'app/DoctrineMigrations'
+    storage:
+        table_storage:
+            table_name: 'migration_versions'
+```
+
+What command should I use to solve the problem?

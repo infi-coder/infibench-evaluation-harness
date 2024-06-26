@@ -1,0 +1,27 @@
+# Corresponding to post https://stackoverflow.com/questions/65235879
+id: 3-12-531
+prompt_path: prompt_3-12-531.txt
+type: code debugging
+
+lang: dart
+
+grading:
+  max_score: 2.0
+  min_score: 0.0
+  keywords:
+    - content: 
+        and:
+          - content: 
+              content: "??"
+            to_lower: true
+          - content: 
+              content: "default value"
+            to_lower: true
+    - content: 
+        and:
+          - content: 
+              content: "!"
+            to_lower: true
+          - content: 
+              content: "operator"
+            to_lower: true

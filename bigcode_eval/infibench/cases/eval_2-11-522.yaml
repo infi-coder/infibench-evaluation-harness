@@ -1,0 +1,24 @@
+# Corresponding to post https://stackoverflow.com/questions/68444429
+id: 2-11-522
+
+prompt_path: prompt_2-11-522.txt
+type: knowledge question-answering
+
+lang: c++/c
+
+grading:
+  max_score: 1.0
+  min_score: 0.0
+  keywords:
+    - content: 
+        or:
+          - content: 
+              content: "No[^A-Za-z0-9_]"
+            regex: true
+            to_lower: true
+          - content: 
+              content: "without any"
+            to_lower: true
+          - content: 
+              content: "no standard API"
+            to_lower: true

@@ -1,0 +1,1 @@
+Angular 6 has new CLI command `ng add <package>`. How can I remove the package using Angular CLI? I was trying to use `ng rm` but it is not working yet.

@@ -1,0 +1,16 @@
+Please write a function `createPriorityQueue` in Java, which creates a priority queue of integer pairs. The smallest key of pairs is considered as priority.
+The context of the function is:
+```java
+import javafx.util.Pair;
+import java.util.*;
+
+public class Test
+{
+    public static PriorityQueue<Pair<Integer, Integer>> createPriorityQueue()
+    {
+        //You should implement here
+    }
+}
+```
+Please give me the whole function with body without context such as class definition or imports.
+Function signature is: `public static PriorityQueue<Pair<Integer, Integer>> createPriorityQueue()`

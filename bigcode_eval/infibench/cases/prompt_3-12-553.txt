@@ -1,0 +1,12 @@
+I developed an app in flutter with Visual Studio code on Mac. I ran the application without any kind of problem on IOS. I also installed it on a physical device and it works perfectly, but I have a problem generating the Android project study and its APK on with flutter.
+Error Message:
+flutter build appbundle
+[!] Your app isn't using AndroidX.
+    To avoid potential build failures, you can quickly migrate your app by following the
+    steps on ...
+Running Gradle task 'bundleRelease'...                                  
+...
+Gradle build failed to produce an .aab file. It's likely that this file was generated under
+/Users/riccardo/Desktop/QuoteFlutter/quote/build, but the tool couldn't find it.
+
+Why and how to fix this?

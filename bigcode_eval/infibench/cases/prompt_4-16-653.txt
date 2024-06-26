@@ -1,0 +1,31 @@
+How can I convert to date format (DD MMM YYYY) using the shell?
+
+I have data in a file where one column is a date column which has date in the following format:
+```
+2021-05-10T18:25:00.000+0100
+2021-05-14T18:25:00.000+0100
+2021-05-19T18:25:00.000+0100
+```
+
+
+```
+10 MAY 2021
+14 MAY 2021
+19 MAY 2021
+```
+
+
+```
+bash
+while -r read line
+do
+    year=`echo $line | awk '{ print $1 }' `
+    month=`echo $line | awk '{ print $2 }' `
+    dt=`echo $line | awk '{ print $3 }' `
+
+    v=$dt"-"$month"-"$year
+    d=date '`$v' | dd-mm-yyyy
+    echo $d
+done < /f/filename.txt
+```
+

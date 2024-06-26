@@ -1,0 +1,15 @@
+My Goal
+
+I have a specific set of a long list containing many asset pairs with different endings: `BTCUSDT` `ETHBTC` `ANKRETH`... From this list, I would like to filter out the symbols ending with USDT.
+
+Here are my attempts:
+
+```python
+my_set = ['LUNAUSDT', 'ETHBTC', 'ETHBNB', 'BTCUSDT', 'MANATUSD', 'ALICEETH' ]
+my_set = [word for word in symbols if 'USDT' in my_set]
+my_set
+```
+
+But this results in an empty set.
+
+How to revise my code? please only generate the revised codes, without any extra comments.

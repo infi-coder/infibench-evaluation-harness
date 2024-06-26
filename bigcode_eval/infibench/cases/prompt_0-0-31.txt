@@ -1,0 +1,19 @@
+In javascript, nullish coalescing operator allows assigning a variable if it is not null or undefined, or an expression otherwise.
+
+```javascript
+a = b ?? other
+```
+
+It is an improvement over previously used `||`` because `||`` will also assign other if `b` is empty string or other falsy, but not nullish value.
+
+However, I would like to use `&&` for value assignment, for example
+
+```javascript
+a = b && func(b)
+```
+
+where we only want to do `func` on `b` if it is nullish, otherwise assign the nullish `b`.
+
+But `&&` only checks for falsiness not nullishness.
+
+Could you help me to write a functon `test(b, func)`, which returns `b` is `b` is not nullish, otherwise `func(b)`? You don't need to output context or explanation, but just the implementation code of `test(b, func)` enclosed by "```javascript" and "```".

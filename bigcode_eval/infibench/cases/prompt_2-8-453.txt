@@ -1,0 +1,10 @@
+I am using err113 as part of golangci-lint. It is complaining about ...
+```
+foo_test.go:55:61: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"repo gave err\")" (goerr113)
+        repoMock.EXPECT().Save(gomock.Eq(&foooBarBar)).Return(nil, errors.New("repo gave err")),
+                                                                  ^
+
+foo_test.go:22:42: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"oops\")" (goerr113)
+    repoMock.EXPECT().FindAll().Return(nil, errors.New("oops"))
+```
+What is best way to fix this ?

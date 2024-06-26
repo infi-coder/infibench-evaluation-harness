@@ -1,0 +1,21 @@
+Could you please tell me how to get input field value on button click in react? I am using react hooks. I want to get first name and last name value on button click. I already pass name attribute in my function component.
+
+```javascript
+import React, { Component, useState } from 'react';
+import { render } from 'react-dom';
+
+export default function InputField({name,label}) {
+  const [state, setState] = useState('')
+  return (
+    <div>
+     <label>{label}</label>
+      <input type="text" 
+      value={state} 
+      name={name}
+      onChange={(e) => setState(e.target.value)} />
+
+      {state}
+    </div>
+  );
+}
+```

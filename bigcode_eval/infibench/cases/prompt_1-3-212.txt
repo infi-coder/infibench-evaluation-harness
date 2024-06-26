@@ -1,0 +1,47 @@
+Suppose I have a class that implements method chaining:
+
+```python
+from __future__ import annotations
+
+class M:
+    def set_width(self, width: int)->M:
+        self.width = width
+        return self
+
+    def set_height(self, height: int)->M:
+        self.height = height
+        return self
+```
+
+I could use it like this:
+
+```python
+box = M().set_width(5).set_height(10)
+```
+
+This works, but if I have a subclass M3D:
+
+```python
+class M3D(M):
+    def set_depth(self, depth: int) -> M3D:
+        self.depth = depth
+        return self
+```
+
+Now I can't do this:
+
+```python
+cube = M3D().set_width(2).set_height(3).set_depth(5)
+```
+
+I get the following error in mypy:
+
+```bash
+_test_typeanotations.py:21: error: "M" has no attribute "set_depth"; maybe "set_width"
+```
+
+Because `set_width()` returns an M which has no method set_depth. I have seen suggestions to override `set_width()` and `set_height()` for every subclass to specify the correct types, but that would be a lot of code to write for each method. There has to be a easier way.
+
+Please rewrite the above classes `M` and `M3D` in Python so that `cube = M3D().set_width(2).set_height(3).set_depth(5)` can work.
+
+Please write only the two classes, do not print any other words.

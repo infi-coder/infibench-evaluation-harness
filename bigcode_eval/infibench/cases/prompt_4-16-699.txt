@@ -1,0 +1,24 @@
+PowerShell I want to cut off a string after a specific character sequence
+
+I am trying to parse a string variable where everything after -354 gets cut off.
+I have variables that look like this: NameOfFile-354-XX.pdf
+Where NameOfFile can be any length and -XX can be anything or not even there at all.
+I want the print of this variable to be: NameOfFile-354
+How do I cut the variable so it cuts after -354?
+What I have tried so far:
+```
+$FileArray = @("Name1-354-03.pdf", "Name23-354-H11.pdf", "Name354-354-02.pdf", "Name3545-354.pdf")
+ForEach ($n in $FileArray){
+     Write-Host $n.Substring(0, $n.lastIndexOf('-354'))
+}
+```
+
+I want the output to be this:
+```
+Name1-354
+Name23-354
+Name354-354
+Name3545-354
+```
+
+Thank you for your help.

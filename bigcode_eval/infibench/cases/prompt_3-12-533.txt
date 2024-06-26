@@ -1,0 +1,39 @@
+I am trying to detect a tap on the screen.
+However, I've tried using the `GestureDetector` but that just leads to the app detecting tap on the child element and not the screen.
+```dart
+class QQHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.blueGrey,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('QuoteQuota'),
+        ),
+        body: GestureDetector(
+          onTap: () => print('Tapped'),
+          child: QQBody(),
+        ),
+      ),
+    );
+  }
+}
+
+class QQBody extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'Hello, World!'
+      ),
+    );
+  }
+}
+```
+Expected Output: "tapped" printed when I click anywhere on the screen with Text in the Center.
+Actual Output: "tapped" printed when I click "Hello, World!".
+How do I do this?

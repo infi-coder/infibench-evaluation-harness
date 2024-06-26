@@ -1,0 +1,21 @@
+How can I minify JSON in a shell script?
+
+I've been looking for a way to uglify some JSON while in my bash console. This help using it afterward in another command (for example, to pass json inline to `httpie`)
+
+Giving:
+
+```
+{
+    "foo": "lorem",
+    "bar": "ipsum"
+}
+```
+
+
+I want to obtain:
+
+```
+{"foo":"lorem","bar":"ipsum"}
+```
+
+

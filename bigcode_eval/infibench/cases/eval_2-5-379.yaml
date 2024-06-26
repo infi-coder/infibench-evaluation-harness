@@ -1,0 +1,7 @@
+id: 2-5-379
+prompt_path: prompt_2-5-379.txt
+type: code completion
+lang: java
+grading:
+  keywords:
+    - 'getClass'

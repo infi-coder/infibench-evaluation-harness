@@ -1,0 +1,17 @@
+When upgrading to ruby 3.1, I am seeing the following sort error message when using YAML.load_file some_file_name. Other load statements cause similar errors but cite different unspecified classes e.g. OpenStruct. I have tried:
+```
+hsh = YAML.load_file some_file_name, permitted_classes: [Matrix, OpenStruct]
+```
+but this gives the error
+```
+Psych::DisallowedClass:
+   Tried to load unspecified class: Symbol
+```
+How do I fix this?
+Specifically, please don't add other text and repeat the following paragraph with [blank] filled:
+
+You need to add Symbol to the [blank] in your case too when reading the YAML file.
+Or when using in Ruby on Rails, you can configure globally in your [blank].
+```
+config.active_record.[blank] += [Matrix, OpenStruct, Symbol]
+```

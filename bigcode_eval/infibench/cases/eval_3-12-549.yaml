@@ -1,0 +1,18 @@
+# Corresponding to post https://stackoverflow.com/questions/58389591
+id: 3-12-549
+
+prompt_path: prompt_3-12-549.txt
+type: knowledge question-answering
+
+lang: dart
+
+grading:
+  max_score: 2.0
+  min_score: 0.0
+  blank_filling:
+    template: "Use ```[blank] = List.[blank](mynewlist)```"
+    blank_str: "[blank]"
+
+    targets: 
+        - "mylist"
+        - "from"

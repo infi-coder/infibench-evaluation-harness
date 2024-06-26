@@ -1,0 +1,17 @@
+I am creating a dapp where multiple users can deposit SOL into an event account, and depending on whoever wins the event, they can redeem SOL back to their wallet.
+How can I transfer native SOL (not any other spl-token) directly into the event account's vault address in an anchor smart contract instruction?
+Specifically, please don't add other text and repeat the following code solution with [blank] filled:
+```
+    let ix = anchor_lang::solana_program::system_instruction::transfer(
+        &[blank],
+        &[blank],
+        amount,
+    );
+    anchor_lang::solana_program::program::invoke(
+        &ix,
+        &[
+            [blank],
+            [blank],
+        ],
+    );
+```

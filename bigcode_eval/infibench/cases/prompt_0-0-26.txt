@@ -1,0 +1,24 @@
+I am using a react hook component with antd. When setting up columns for a table, the render function is giving me an ESLint error:
+
+```
+ESLint: Component definition is missing displayName (react/display-name)
+```
+
+I have tried adding displayName to the object but this doesn't work.
+
+This is the code:
+
+```jsx
+const columns_payment_summary_table = [ 
+    {
+      title: FooConstants.LABEL_QUANTITY_SELECTED,
+      dataIndex: 'group',
+      key: 'group',
+      render: text => (
+        <span>{getCountForCountry(text)}</span>
+      ),
+    }
+  ]
+```
+
+Do you know how to shut down the ESLint's error by editing the above code snippet?

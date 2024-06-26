@@ -1,0 +1,15 @@
+Is there any way to change background color dynamically on scroll?
+
+Could you please fill in [blank] in the following code to complete this task?  Specifically, please don't add other text and repeat the following code with [blank] filled.
+
+```javascript
+const [red, green, blue] = [69, 111, 225]
+const section1 = document.querySelector('.section1')
+
+window.addEventListener([blank], () => {
+  let y = 1 + (window.scrollY || window.pageYOffset) / 150
+  y = y < 1 ? 1 : y // ensure y is always >= 1 (due to Safari's elastic scroll)
+  const [r, g, b] = [red/y, green/y, blue/y].map(Math.round)
+  section1.[blank] = `rgb(${r}, ${g}, ${b})`
+})
+```

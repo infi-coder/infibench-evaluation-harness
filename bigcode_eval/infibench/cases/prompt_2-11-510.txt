@@ -1,0 +1,17 @@
+How to fix the "error: ‘std::filesystem’ has not been declared" after including the library <experimental/filesystem> under c++17?
+The ```main.cpp``` file is as the following:
+```c++
+#include <experimental/filesystem>
+
+int main(int argc, char** argv)
+{
+    std::string imageDirectory = "./image";;
+    std::vector<std::string> imagePath;
+    for (const auto& entry: std::filesystem::directory_iterator(imageDirectory))
+    {
+        imagePath.push_back(entry.path());
+        std::cout << entry.path() << std::endl;
+    }
+    return 0;
+}
+```

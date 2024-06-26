@@ -1,0 +1,34 @@
+How do I unpack tuple format in R?
+
+Here is the dataset.
+
+```r
+library(data.table)
+
+x <- structure(list(id = c("A", "B" ),
+segment_stemming = c("[('Brownie', 'Noun'), ('From', 'Josa'), ('Pi', 'Noun')]",
+"[('Dung-caroon-gye', 'Noun'), ('in', 'Josa'), ('innovation', 'Noun')]" )),
+row.names = c(NA, -2L),
+class = c("data.table", "data.frame" ))
+
+x
+# id                                                     segment_stemming
+# 1:  A               [('Brownie', 'Noun'), ('From', 'Josa'), ('Pi', 'Noun')]
+# 2:  B [('Dung-caroon-gye', 'Noun'), ('in', 'Josa'), ('innovation', 'Noun')]
+```
+
+I would like to split the tuple into rows. Here is my expected outcome.
+
+```r
+id             segment_stemming
+A              ('Brownie', 'Noun')
+A              ('From', 'Josa')
+A              ('Pi', 'Noun')
+B              ('Dung-caroon-gye', 'Noun')
+B              ('in', 'Josa')
+B              ('innovation', 'Noun')
+```
+
+Please write a function `mySplit` in R, which takes a table variable `x` as the argument, which has the same structure as above, and returns the table according to the above requirements.
+
+Function signature is: `mySplit <- function(x)`

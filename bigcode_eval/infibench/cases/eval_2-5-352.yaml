@@ -1,0 +1,16 @@
+id: 2-5-352
+prompt_path: prompt_2-5-352.txt
+type: non-code debugging
+lang: java
+grading:
+  keywords:
+    - content:
+        and:
+          - '11'
+          - content:
+              or:
+                - content: 'jvm'
+                - content: 'jdk'
+                - content: 'jre'
+                - content: 'java'
+      to_lower: true

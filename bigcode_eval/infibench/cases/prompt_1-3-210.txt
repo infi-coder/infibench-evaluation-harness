@@ -1,0 +1,58 @@
+I was expecting the Python match/case to have equal time access to each case, but seems like I was wrong. Any good explanation why?
+
+Lets use the following example:
+
+```python
+def match_case(decimal):
+    match decimal:
+        case '0':
+            return "000"
+        case '1':
+            return "001"
+        case '2':
+            return "010"
+        case '3':
+            return "011"
+        case '4':
+            return "100"
+        case '5':
+            return "101"
+        case '6':
+            return "110"
+        case '7':
+            return "111"
+        case _:
+            return "NA"
+```
+
+And define a quick tool to measure the time:
+
+```python
+import time
+def measure_time(funcion):
+    def measured_function(*args, **kwargs):
+        init = time.time()
+        c = funcion(*args, **kwargs)
+        print(f"Input: {args[1]} Time: {time.time() - init}")
+        return c
+    return measured_function
+
+@measure_time
+def repeat(function, input):
+    return [function(input) for i in range(10000000)]
+If we run each 10000000 times each case, the times are the following:
+
+for i in range(8):
+    repeat(match_case, str(i))
+
+# Input: 0 Time: 2.458001136779785
+# Input: 1 Time: 2.36093807220459
+# Input: 2 Time: 2.6832823753356934
+# Input: 3 Time: 2.9995620250701904
+# Input: 4 Time: 3.5054492950439453
+# Input: 5 Time: 3.815168857574463
+# Input: 6 Time: 4.164452791213989
+# Input: 7 Time: 4.857251167297363
+```
+
+Just wondering why the access times are different. Isn't this optimised with perhaps a lookup table?. Note that I'm not interested in other ways of having equals access times (i.e. with dictionaries).

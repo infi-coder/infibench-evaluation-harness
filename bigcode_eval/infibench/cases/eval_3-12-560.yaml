@@ -1,0 +1,24 @@
+# Corresponding to post https://stackoverflow.com/questions/66542199
+id: 3-12-560
+
+prompt_path: prompt_3-12-560.txt
+type: knowledge question-answering
+
+lang: dart
+grading:
+  max_score: 2.0
+  min_score: 0.0
+  blank_filling:
+    template: "The purpose of MaterialStateProperty is to make it possible to specify different [blank] for different [blank]."
+    blank_str: "[blank]"
+
+    targets: 
+        - content:
+            or:
+              - content:
+                content: "properties"
+                to_lower: true
+              - content:
+                content: "styles"
+                to_lower: true
+        - "states"

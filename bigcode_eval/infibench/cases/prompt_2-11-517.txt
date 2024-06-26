@@ -1,0 +1,11 @@
+What is the simplest syntax for string interpolation in c++?
+I'm used to easy-to-read syntax for string interpolation like this in c# or JavaScript.
+In c# strings are interpolated like this:
+```c#
+$"My variable has value {myVariable}"
+```
+In JavaScript it looks like this:
+```javascript
+`My variable has value ${myVariable}`
+```
+What is the simplest way of doing this in c++?

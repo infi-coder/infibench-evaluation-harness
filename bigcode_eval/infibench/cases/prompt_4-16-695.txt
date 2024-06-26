@@ -1,0 +1,36 @@
+OSX Docker Build: How can I see the full build output? (--progress=plain not the solution!)
+
+I just got a MacBook from work and I am using it to build docker images. Usually, the docker build shows the full log (i.e. `ls -la` showing the cwd). Thats at least what I'm used to from my linux machine.
+On the macbook however, it only shows a brief overview: (actual console output)
+```
+=> [internal] load build definition from Dockerfile                                                                                                                                                                                          0.0s
+ => => transferring dockerfile: 40B                                                                                                                                                                                                           0.0s
+ => [internal] load .dockerignore                                                                                                                                                                                                             0.0s
+ => => transferring context: 2B                                                                                                                                                                                                               0.0s
+ => [internal] load metadata for docker.io/library/debian:stretch-slim                                                                                                                                                                        1.1s
+ => [internal] load build context                                                                                                                                                                                                             0.0s
+ => => transferring context: 58B                                                                                                                                                                                                              0.0s
+ => [1/16] FROM docker.io/library/debian:stretch-slim@sha256:eb436e834ba416c45359aa0709febef17fdea65ab6a8f4db12016aa2fa63be0c                                                                                                                 0.0s
+ => CACHED [2/16] RUN apt-get update && apt-get upgrade -y                                                                                                                                                                                    0.0s
+ => CACHED [3/16] RUN apt-get install wget -y                                                                                                                                                                                                 0.0s
+ => CACHED [4/16] RUN wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.22-linux-glibc2.12-x86_64.tar.gz                                                                                                                           0.0s
+ => CACHED [5/16] RUN tar -zxvf mysql-5.7.22-linux-glibc2.12-x86_64.tar.gz                                                                                                                                                                    0.0s
+ => CACHED [6/16] RUN mv mysql-5.7.22-linux-glibc2.12-x86_64 mysql-5.7.22                                                                                                                                                                     0.0s
+ => CACHED [7/16] RUN ls -la                                                                                                                                                                                                                  0.0s
+ => CACHED [8/16] RUN mv mysql-5.7.22 /usr/local/                                                                                                                                                                                             0.0s
+ => CACHED [9/16] RUN groupadd mysql                                                                                                                                                                                                          0.0s
+ => CACHED [10/16] RUN useradd -r -s /sbin/nologin -g mysql mysql -d /usr/local/mysql                                                                                                                                                         0.0s
+ => CACHED [11/16] RUN chown -R mysql /usr/local/mysql-5.7.22/                                                                                                                                                                                0.0s
+ => CACHED [12/16] RUN chgrp -R mysql /usr/local/mysql-5.7.22/                                                                                                                                                                                0.0s
+ => CACHED [13/16] COPY my.cnf /etc/                                                                                                                                                                                                          0.0s
+ => CACHED [14/16] COPY startup.sh .                                                                                                                                                                                                          0.0s
+ => CACHED [15/16] RUN ls -la                                                                                                                                                                                                                 0.0s
+ => exporting to image                                                                                                                                                                                                                        0.0s
+ => => exporting layers                                                                                                                                                                                                                       0.0s
+ => => writing image sha256:d93a0842352d0980be6ba4b57fdd6cad18818b7527bedecfb706e416b7fb6062                                                                                                                                                  0.0s
+ => => naming to docker.io/library/customsql
+```
+
+Steps 7 and 15 are supposed to show me the results, but this is just omitted. (I know, its the cached result, but it didn't show up, when  I changed the Dockerfile and rebuild the layer as well).
+setting `--progress=plain`  didn't do any good. In fact it just changed the color from purple to white (HideThePainHarold.jpg).
+Any help will be greatly appreciated.

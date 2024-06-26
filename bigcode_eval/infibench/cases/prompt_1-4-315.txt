@@ -1,0 +1,23 @@
+I have the following data frame:
+
+```r
+X1   X2   X3   X4   X5   X6   X7
+p1   H    I    K    J    K    H
+p2   H    K    J    K    I    J
+p3   J    K    H    I    J    K
+p4   K    I    H    J    I    J
+```
+
+I want to create a new data frame with the column `X1` and concatenate every two columns starting from `X2` so the final table looks like:
+
+```r
+X1   X2    X3    X4
+p1   HI    KJ    KH
+p2   HK    JK    IJ
+p3   JK    HI    JK
+p4   KI    HJ    IJ
+```
+
+Please write a function `concat` in R, which takes a dataframe `df` (with the columns `X1`, `X2`,.., `X7` as above)as the argument and returns a new dataframe according to the above requirements.
+
+Function signature is: `concat <- function(df)`

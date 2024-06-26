@@ -1,0 +1,15 @@
+I am using Tiptap with vue.js to create a message area. It is very useful. However, I found myself stuck when looking for an event listener that listens for "enter" key. When the user hit the enter, I want to submit their chat and clear the editor.
+
+Here is my code:
+
+```javascript
+mounted() {
+  let editor = new Editor({
+    extensions: [StarterKit],
+    content: this.value
+  });
+  this.editor = editor;
+}
+```
+
+Could you help me to revise the above code and let it execute `console.log("good")` when enter is hit? You don't need to provide much explanation or code context, but just the revised version of the above code.

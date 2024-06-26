@@ -1,0 +1,23 @@
+In React.js, what is the proper way to chain queries if the second query requires a parameter that is returned by the first query?
+
+Concretely, I have the first query
+
+```javascript
+const { data: user } = useGetUserQuery();
+```
+
+and the `user` object contains `id` that is used to run the second query
+
+```javascript
+const { data: userBio } = useGetUserBioQuery(user.id);
+```
+
+How do I make sure the second query runs only after the first one is fulfilled?
+
+Specifically, I have change the first query to be
+
+```javascript
+const { data: user, isFulfilled: userFulfilled } = useGetUserQuery();
+```
+
+Please output the second query code for me. You don't need to add other explanation text or repeat my context code.

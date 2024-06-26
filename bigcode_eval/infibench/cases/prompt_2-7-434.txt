@@ -1,0 +1,5 @@
+As my IDE points out, the AbstractController::getDoctrine() method is now deprecated.
+
+I haven't found any reference for this deprecation neither in the official documentation nor in the Github changelog.
+
+What is the new alternative or workaround for this shortcut?

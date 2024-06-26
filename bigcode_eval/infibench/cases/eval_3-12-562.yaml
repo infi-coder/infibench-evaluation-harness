@@ -1,0 +1,29 @@
+# Corresponding to post https://stackoverflow.com/questions/54792056
+id: 3-12-562
+
+prompt_path: prompt_3-12-562.txt
+type: knowledge question-answering
+
+lang: dart
+
+grading:
+  max_score: 4.0
+  min_score: 0.0
+  blank_filling:
+    template: "You can use the [blank] and [blank] methods.
+Also you can use [blank] to define the base time and change the day/month/[blank] properties."
+    blank_str: "[blank]"
+
+    targets: 
+        - content:
+            or:
+              - content: "subtract"
+              - content: "add"
+        - content:
+            or:
+              - content: "subtract"
+              - content: "add"
+        - content: 
+            content: "DateTime"
+          to_lower: true
+        - "year"

@@ -1,0 +1,23 @@
+# Corresponding to post https://stackoverflow.com/questions/54849725
+id: 3-12-545
+# for case self identificaton
+
+prompt_path: prompt_3-12-545.txt
+type: code debugging
+
+lang: dart
+
+grading:
+  max_score: 2.0
+  min_score: 0.0
+  keywords:
+    - content: 
+        and:
+          - content: 
+              content: "body"
+            to_lower: true
+          - content: 
+              content: "wrap"
+            to_lower: true
+    - content: "jsonEncode"
+      to_lower: true

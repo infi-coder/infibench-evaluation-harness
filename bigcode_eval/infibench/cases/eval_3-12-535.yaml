@@ -1,0 +1,29 @@
+# Corresponding to post https://stackoverflow.com/questions/54010649
+id: 3-12-535
+
+prompt_path: prompt_3-12-535.txt
+type: non-code debugging
+lang: dart
+
+grading:
+  max_score: 4.0
+  min_score: 0.0
+  blank_filling:
+    template: "You probably configures [blank] too small and you get this error when the emulator runs out of [blank] when you install.
+Open the [blank] manager in Android Studio, edit the emulator and increase \"[blank]\" and restart the emulator."
+    
+    blank_str: "[blank]"
+    targets: 
+        - "storage"
+        - "storage"
+        - content:
+            or:
+              - content:
+                content: "Android Virtual Device"
+                to_lower: true
+              - content:
+                content: "AVD"
+                to_lower: true
+        - content:
+            content: "Internal Storage"
+          to_lower: true

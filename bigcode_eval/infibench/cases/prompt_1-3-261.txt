@@ -1,0 +1,62 @@
+I've been getting this error on several programs for now. I've tried upgrading pytube, reinstalling it, tried some fixes, changed URLs and code, but nothing seems to work.
+
+```python
+from pytube import YouTube
+
+#ask for the link from user
+link = input("Enter the link of YouTube video you want to download:  ")
+yt = YouTube(link)
+
+#Showing details
+print("Title: ",yt.title)
+print("Number of views: ",yt.views)
+print("Length of video: ",yt.length)
+print("Rating of video: ",yt.rating)
+#Getting the highest resolution possible
+ys = yt.streams.get_highest_resolution()
+
+#Starting download
+print("Downloading...")
+ys.download()
+print("Download completed!!")
+```
+
+and this is the error code:
+
+```bash
+  File "C:\Users\Madjid\PycharmProjects\pythonProject\app2.py", line 6, in <module>
+    yt = YouTube(link)
+  File "C:\Users\Madjid\PycharmProjects\pythonProject\venv\lib\site-packages\pytube\__main__.py", line 91, in __init__
+    self.prefetch()
+  File "C:\Users\Madjid\PycharmProjects\pythonProject\venv\lib\site-packages\pytube\__main__.py", line 181, in prefetch
+    self.vid_info_raw = request.get(self.vid_info_url)
+  File "C:\Users\Madjid\PycharmProjects\pythonProject\venv\lib\site-packages\pytube\request.py", line 36, in get
+    return _execute_request(url).read().decode("utf-8")
+  File "C:\Users\Madjid\PycharmProjects\pythonProject\venv\lib\site-packages\pytube\request.py", line 24, in _execute_request
+    return urlopen(request)  # nosec
+  File "E:\Python\lib\urllib\request.py", line 214, in urlopen
+    return opener.open(url, data, timeout)
+  File "E:\Python\lib\urllib\request.py", line 523, in open
+    response = meth(req, response)
+  File "E:\Python\lib\urllib\request.py", line 632, in http_response
+    response = self.parent.error(
+  File "E:\Python\lib\urllib\request.py", line 555, in error
+    result = self._call_chain(*args)
+  File "E:\Python\lib\urllib\request.py", line 494, in _call_chain
+    result = func(*args)
+  File "E:\Python\lib\urllib\request.py", line 747, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "E:\Python\lib\urllib\request.py", line 523, in open
+    response = meth(req, response)
+  File "E:\Python\lib\urllib\request.py", line 632, in http_response
+    response = self.parent.error(
+  File "E:\Python\lib\urllib\request.py", line 561, in error
+    return self._call_chain(*args)
+  File "E:\Python\lib\urllib\request.py", line 494, in _call_chain
+    result = func(*args)
+  File "E:\Python\lib\urllib\request.py", line 641, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 410: Gone
+```
+
+How to solve the problem?

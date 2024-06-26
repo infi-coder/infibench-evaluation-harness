@@ -1,0 +1,42 @@
+I am using React and the styled-component says that my following code does not follow best practice and has low efficiency. Could you have me to refactor the following code?
+
+
+```javascript
+import React from 'react'
+import styled from 'styled-components'
+
+const Tab = ({ onClick, isSelected, children }) => {
+    const TabWrapper = styled.li`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+    margin: 1px;
+    font-size: 3em;
+    color: ${props => (isSelected ? `white` : `black`)};
+    background-color: ${props => (isSelected ? `black` : `#C4C4C4`)};
+    cursor: ${props => (isSelected ? 'default' : `pointer`)};
+`
+
+    return <TabWrapper onClick={onClick}>{children}</TabWrapper>
+}
+
+export default Tab
+```
+
+Specifically, pelase don't add other text and repeat the following code with ****** filled:
+
+```javascript
+import React from 'react'
+import styled from 'styled-components'
+
+// start
+const TabWrapper = [blank]
+// end
+
+const Tab = ({ onClick, isSelected, children }) => {
+  return <TabWrapper onClick={onClick}>{children}</TabWrapper>
+}
+
+export default Tab
+```

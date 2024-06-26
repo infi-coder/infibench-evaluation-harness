@@ -1,0 +1,41 @@
+How to remove special characters from rows in pandas dataframe
+
+I have a column in pandas data frame like the one shown below;
+
+```
+LGA
+
+Alpine (S)
+Ararat (RC)
+Ballarat (C)
+Banyule (C)
+Bass Coast (S)
+Baw Baw (S)
+Bayside (C)
+Benalla (RC)
+Boroondara (C)
+```
+
+What I want to do, is to remove all the special characters from the ending of each row. ie. (S), (RC).
+
+Desired output should be;
+
+```
+LGA
+
+Alpine
+Ararat
+Ballarat
+Banyule
+Bass Coast
+Baw Baw
+Bayside
+Benalla
+Boroondara
+```
+
+I am not quite sure how to get desired output mentioned above.
+
+Please write a function `remove` in Python, which takes DataFrame variable `df` as the argument, which is defined as above (the column name is "LGA"), and returns `df` according to my requirement.
+
+Function signature is: `remove(df)`

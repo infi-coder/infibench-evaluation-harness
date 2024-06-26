@@ -1,0 +1,4 @@
+What is MaterialStateProperty in ButtonStyle?
+Specifically, please don't add other text and repeat the following paragraph with [blank] filled:
+
+The purpose of MaterialStateProperty is to make it possible to specify different [blank] for different [blank].

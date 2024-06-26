@@ -1,0 +1,46 @@
+Node.js build fails in my local Windows environment. I use Nove v5.10.1. 
+
+From the logs I was able to detect that the problem is with internal dependency that is node-gyp v3.5.0 from node-sass v3.8.0 where I found for node-gyp the prerequisite Python needs to be installed.
+
+Here is the error log:
+
+```
+gyp verb check python checking for Python executable "python2" in the PATH
+gyp verb `which` failed Error: not found: python2
+gyp verb `which` failed     at getNotFoundError (C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\which\which.js:13:12)
+gyp verb `which` failed     at F (C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\which\which.js:68:19)
+gyp verb `which` failed     at E (C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\which\which.js:80:29)
+gyp verb `which` failed     at C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\which\which.js:89:16
+gyp verb `which` failed     at C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\isexe\index.js:44:5
+gyp verb `which` failed     at C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\isexe\windows.js:29:5
+gyp verb `which` failed     at FSReqWrap.oncomplete (fs.js:82:15)
+gyp verb `which` failed  python2 { [Error: not found: python2] code: 'ENOENT' }
+gyp verb check python checking for Python executable "python" in the PATH
+gyp verb `which` failed Error: not found: python
+gyp verb `which` failed     at getNotFoundError (C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\which\which.js:13:12)
+gyp verb `which` failed     at F (C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\which\which.js:68:19)
+gyp verb `which` failed     at E (C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\which\which.js:80:29)
+gyp verb `which` failed     at C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\which\which.js:89:16
+gyp verb `which` failed     at C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\isexe\index.js:44:5
+gyp verb `which` failed     at C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\isexe\windows.js:29:5
+gyp verb `which` failed     at FSReqWrap.oncomplete (fs.js:82:15)
+gyp verb `which` failed  python { [Error: not found: python] code: 'ENOENT' }
+gyp verb could not find "python". checking python launcher 
+gyp verb could not find "python". guessing location 
+gyp verb ensuring that file exists: C:\Python27\python.exe
+gyp ERR! configure error 
+gyp ERR! stack Error: Can't find Python executable "python", you can set the PYTHON env variable.
+gyp ERR! stack     at Object.failNoPython (C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\node-gyp\lib\configure.js:454:19)
+gyp ERR! stack     at Object.<anonymous> (C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\node-gyp\lib\configure.js:480:16)
+gyp ERR! stack     at C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\graceful-fs\polyfills.js:284:29
+gyp ERR! stack     at FSReqWrap.oncomplete (fs.js:82:15)
+gyp ERR! System Windows_NT 6.3.9600
+gyp ERR! command "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files (x86)\\Jenkins\\jobs\\NdbSite-hot-fix-Manual-PreBuild\\workspace\\src\\NdbSite.UI\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild" "--verbose" "--libsass_ext=" "--libsass_cflags=" "--libsass_ldflags=" "--libsass_library="
+gyp ERR! cwd C:\Program Files (x86)\Jenkins\jobs\NdbSite-hot-fix-Manual-PreBuild\workspace\src\NdbSite.UI\node_modules\node-sass
+gyp ERR! node -v v5.10.1
+gyp ERR! node-gyp -v v3.5.0
+gyp ERR! not ok 
+Build failed
+```
+
+Could you tell me how to fix this?

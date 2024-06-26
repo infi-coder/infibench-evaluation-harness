@@ -1,0 +1,36 @@
+# Corresponding to post https://stackoverflow.com/questions/64819025
+id: 2-10-504
+prompt_path: prompt_2-10-504.txt
+type: knowledge question-answering
+lang: rust
+
+grading:
+  
+  max_score: 2.0
+  min_score: 0.0
+  keywords:
+    - content: 
+        or:
+          - "iter().unique()"
+          - "Itertools::unique"
+      weight: 2.0
+      to_lower: true
+    - content: 
+        or:
+          - "iter().unique_by"
+          - "Itertools::unique_by"
+      weight: 1.0
+      to_lower: true
+    - content: 
+        content: "partition_dedup_by"
+      weight: 1.0
+    - content: 
+        and:
+          - content: 
+              or:
+                - "HashSet"
+                - "HashMap"
+            to_lower: true
+          - content: 
+              content: "retain"
+      weight: 1.0

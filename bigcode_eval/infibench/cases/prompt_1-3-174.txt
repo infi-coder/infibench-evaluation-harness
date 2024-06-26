@@ -1,0 +1,44 @@
+I installed psycopg2 using conda on Windows 10.
+https://anaconda.org/anaconda/psycopg2
+I did it in a clean new conda environment (named wr).
+I then tried to run this sample app but I am getting this error (see below). I have no idea what I might be doing wrong because it was all straightforward and I did it in a clean way.
+Any ideas how to solve this?
+```python
+import psycopg2
+try:
+    connection = psycopg2.connect(user = "***",
+                                  password = "***",
+                                  host = "***",
+                                  port = "5432",
+                                  database = "***")
+
+
+    cursor = connection.cursor()
+    # Print PostgreSQL Connection properties
+    print ( connection.get_dsn_parameters(),"\n")
+
+    # Print PostgreSQL version
+    cursor.execute("SELECT version();")
+    record = cursor.fetchone()
+    print("You are connected to - ", record,"\n")
+
+except (Exception, psycopg2.Error) as error :
+    print ("Error while connecting to PostgreSQL", error)
+finally:
+    #closing database connection.
+        if(connection):
+            cursor.close()
+            connection.close()
+            print("PostgreSQL connection is closed")
+```
+Error in VS code:
+```bash
+PS C:\Work\WRR\git\tools\JTunnelTestApp>  cd 'c:\Work\WRR\git\tools\JTunnelTestApp'; & 'C:\Programs\Anaconda3\envs\wr\python.exe' 'c:\Users\petrop01\.vscode\extensions\ms-python.python-2020.9.114305\pythonFiles\lib\python\debugpy\launcher' '56143' '--' 'c:\Work\WRR\git\tools\JTunnelTestApp\main.py'
+Traceback (most recent call last):
+  File "c:\Work\WRR\git\tools\JTunnelTestApp\main.py", line 1, in <module>
+    import psycopg2
+  File "C:\Programs\Anaconda3\envs\wr\lib\site-packages\psycopg2\__init__.py", line 51, in <module>
+    from psycopg2._psycopg import (                     # noqa
+ImportError: DLL load failed while importing _psycopg: The operating system cannot run %1.
+PS C:\Work\WRR\git\tools\JTunnelTestApp>
+```

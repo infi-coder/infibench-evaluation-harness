@@ -1,0 +1,74 @@
+I am trying to hide the tabs when entering "Settings" using React Native Navigation v5.
+
+Here is my code:
+
+```javascript
+import Home from './components/Home';
+import SettingsScreen from './components/Settings';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const SettingsStack = createStackNavigator();
+const ProfileStack  = createStackNavigator();
+
+function SettingsStackScreen() {
+    return (
+        <SettingsStack.Navigator>
+            <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+        </SettingsStack.Navigator>
+    )
+}
+
+function ProfileStackScreen() {
+    return (
+        <ProfileStack.Navigator>
+            <ProfileStack.Screen name="Home" component={Home} />
+        </ProfileStack.Navigator>
+    )
+}
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={ProfileStackScreen} />
+        <Tab.Screen name="Settings" component={SettingsStackScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+I learned that there are two ways to achieve so. The first way is to pass some options in `App()`, and the second way is to set navigation options in `SettingsStackScreen`. Could you help me to complete the following code? You only need to fill in [blank], not adding other text.
+
+First way:
+
+```javascript
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={ProfileStackScreen} />
+        <Tab.Screen options=[blank] name="Settings" component={SettingsStackScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+Second way:
+
+```javascript
+function SettingsStackScreen({ navigation }) {
+    [blank]
+    return (
+        <SettingsStack.Navigator>
+            <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+        </SettingsStack.Navigator>
+    )
+}
+```

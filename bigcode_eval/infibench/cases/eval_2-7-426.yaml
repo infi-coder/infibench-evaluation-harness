@@ -1,0 +1,7 @@
+id: 2-7-426
+prompt_path: prompt_2-7-426.txt
+type: code debugging
+lang: php
+grading:
+  keywords:
+    - 'ob_start()'
