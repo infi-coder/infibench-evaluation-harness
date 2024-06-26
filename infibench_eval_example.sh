@@ -36,7 +36,7 @@ do
     n=$((n+1)) 
     sleep 120
 done
-python3 infibench_infer_post_processor.py.py generations_${SAVE_NAME}.json references.json /mnt/bn/codegeniusgen1/inficoder-eval/open-source/responses/${SAVE_NAME}_output.csv --eos '<eos>'
+python3 infibench_infer_post_processor.py generations_${SAVE_NAME}.json references.json /mnt/bn/codegeniusgen1/inficoder-eval/open-source/responses/${SAVE_NAME}_output.csv --eos '<eos>'
 
 python3 bigcode_eval/infibench/grader_main.py bigcode_eval/infibench/suite_v2.1.yaml /mnt/bn/codegeniusgen1/inficoder-eval/open-source/responses/${SAVE_NAME}_output.csv --batched --batched_cases_path bigcode_eval/infibench/batched_cases/suite_v2.1_data.csv --result_detail_path results/suite_v2.1_model_to_test.yaml --result_summary_path results/suite_v2.1_model_to_test_table.txt
 python3 bigcode_eval/infibench/print_result_stat.py results/suite_v2.1_model_to_test.yaml results/suite_v2.1_model_to_test_table.txt --model_name $MODEL_NAME --case_path_prefix bigcode_eval/infibench
