@@ -12,7 +12,7 @@ pip install transformers==4.40.0 accelerate tiktoken einops scipy transformers_s
 
 cd /opt/tiger/bigcode-evaluation-harness
 
-set -e # 可选，使之遇错终止，可保证结果可靠性
+set -e # Optional, set to interrupt the script execution when error occurred, to ensure result reliability
 mv -f /usr/bin/node /usr/bin/node_old
 mv -f /usr/bin/npm /usr/bin/npm_old
 mv -f /usr/bin/npx /usr/bin/npx_old
