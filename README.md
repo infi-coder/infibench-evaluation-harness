@@ -1,3 +1,53 @@
+
+<h1 align="center">InfiBench: Evaluating the Question-Answering Capabilities of Code LLMs</h1>
+
+
+<h4 align="center">The InfiCoder Team</h4>
+
+<h4 align="center"><a href="https://infi-coder.github.io/infibench/">Project Page</a></h4>
+
+
+<h4 align="center">
+    <p>
+        <a href="#features">Features</a> |
+        <a href="#usage">Usage</a> |
+        <a href="#future">Contribution</a>
+    <p>
+</h4>
+
+## Features
+This repo contains the full InfiBench benchmark including both benchmark data and evaluation code. The benchmark is designed to evaluate the question-answering capabilities of code language models. 
+
+The benchmark is inspired by and forked from the [BigCode Evaluation Harness](https://github.com/bigcode-project/bigcode-evaluation-harness) framework, adding the following two main features:
+
+1. **LLM Inference on All InfiBench Questions**
+
+TODO
+
+2. **Response Evaluation**
+
+Featuring the execution runtime for 8 languages (Python, Javascript, Java, C, C++, Go, R, C#), given model responses, the framework can directly evaluate and output the scores along with subscores in a nice table.
+
+## Usage
+
+TODO
+
+## Acknowledgements
+
+Some components of this framework is built upon:
+
+- https://huggingface.co/spaces/Muennighoff/code_eval_octopack
+
+- https://huggingface.co/spaces/evaluate-metric/rouge
+
+(The required components have been copied into this repo --- no need to download them separately any more.)
+
+The execution environment is partly adapted from Humanevalpack: https://github.com/bigcode-project/bigcode-evaluation-harness/blob/main/lm_eval/tasks/humanevalpack.py.
+
+----
+The repo is forked the `main` branch of Jun 25 2024 version of `bigcode-evaluation-harness`.
+Below is the original README.md content from the repo.
+
 <h1 align="center">Code Generation LM Evaluation Harness</h1>
 
 
@@ -72,9 +122,9 @@ huggingface-cli login
 
 We use [`accelerate`](https://huggingface.co/docs/accelerate/index) to generate code/text in parallel when multiple GPUs are present (multi-GPU mode). You can configure it using:
 
-```bash
 accelerate config
-```
+
+
 
 This evaluation harness can also be used in an evaluation only mode, you can use a Multi-CPU setting. For large models, we recommend specifying the precision of the model using the `--precision` flag instead of accelerate config to have only one copy of the model in memory. You can also load models in 8bit with the flag `--load_in_8bit` or 4bit with `--load_in_4bit` if you have `bitsandbytes` installed with the required transformers and accelerate versions.
 
@@ -88,7 +138,6 @@ For more details on how to evaluate on the tasks, please refer to the documentat
 ### Generation and evaluation
 Below is an example to generate and evaluate on a task.
 
-```bash
 accelerate launch  main.py \
   --model <MODEL_NAME> \
   --tasks <TASK_NAME> \
@@ -101,7 +150,8 @@ accelerate launch  main.py \
   --precision <PRECISION> \
   --allow_code_execution \
   --save_generations
-```
+
+
 * `limit` represents the number of problems to solve, if it's not provided all problems in the benchmark are selected. 
 * `allow_code_execution` is for executing the generated code: it is off by default, read the displayed warning before calling it to enable execution. 
 * Some models with custom code on the HF hub like [SantaCoder](https://huggingface.co/bigcode/santacoder) require calling `--trust_remote_code`, for private models add `--use_auth_token`.
@@ -124,23 +174,23 @@ If you already have the generations in a json file from this evaluation harness 
 
 Below is an example, be mind of specifying arguments proper to the task you are evaluating on, and note that `model` value here only serves for documenting the experiment. Also add `--n_samples` to specify the number of samples to evaluate per problem (usually the same value used in generation).
 
-```bash
+
 accelerate launch  main.py   --tasks mbpp  --allow_code_execution  --load_generations_path generations.json  --model incoder-temperature-08
-```
+
 
 ## Docker containers
 For safety, we provide a Dockerfiles to do the execution inside a docker container. To do that, first, do the generation on your machine and save them in `generations.json` for example by adding the flag `--generation_only` to the command. Then use the Docker image that we provide:
 
-```bash
+````
 $ docker pull ghcr.io/bigcode-project/evaluation-harness
 $ docker tag ghcr.io/bigcode-project/evaluation-harness evaluation-harness
-```
+````
 
 If you want to evaluate on MultiPL-E, we have a different Dockerfile since it requires more dependencies, use:
-```bash
+````bash
 $ docker pull ghcr.io/bigcode-project/evaluation-harness-multiple
 $ docker tag ghcr.io/bigcode-project/evaluation-harness-multiple evaluation-harness-multiple
-```
+````
 
 
 ### Building  Docker images
@@ -148,20 +198,20 @@ $ docker tag ghcr.io/bigcode-project/evaluation-harness-multiple evaluation-harn
 If you modify the evaluation harness, you may want to rebuild the docker images.
 
 Here's how to build a docker image for the evaluation harness:
-```bash
+````bash
 $ sudo make DOCKERFILE=Dockerfile  all
-```
+````
 This creates an image called `evaluation-harness`, and runs a test on it. To skip the test remove `all` form the command.
 
 For MultiPL-E:
-```bash
+````bash
 $ sudo make DOCKERFILE=Dockerfile-multiple all
-```
+````
 This creates an image called `evaluation-harness-multiple`.
 
 ### Evaluating inside a container
 Suppose you generated text with the `bigcode/santacoder` model and saved it in `generations_py.json` with:
-```bash
+````bash
 accelerate launch  main.py \
     --model bigcode/santacoder  \
     --tasks multiple-py  \
@@ -174,10 +224,10 @@ accelerate launch  main.py \
     --generation_only \
     --save_generations \
     --save_generations_path generations_py.json
-```
+````
 
 To run the container (here from image `evaluation-harness-multiple`) to evaluate on `generations_py.json`, or another file mount it with `-v`, specify `n_samples` and allow code execution with `--allow_code_execution` (and add the number of problems `--limit`  if it was used during generation):
-```bash
+````bash
 $ sudo docker run -v $(pwd)/generations_py.json:/app/generations_py.json:ro -it evaluation-harness-multiple python3 main.py \
     --model bigcode/santacoder \
     --tasks multiple-py \
@@ -185,7 +235,7 @@ $ sudo docker run -v $(pwd)/generations_py.json:/app/generations_py.json:ro -it 
     --allow_code_execution  \
     --temperature 0.8 \
     --n_samples 200
-```
+````
 
 ## Implementing new tasks
 To implement a new task in this evaluation harness, see the guide in [`docs/guide`](https://github.com/bigcode-project/bigcode-evaluation-harness/blob/main/docs/guide.md). The are also contribution guidelines in this [`CONTRIBUTING.md`](https://github.com/bigcode-project/bigcode-evaluation-harness/blob/main/CONTRIBUTING.md)
@@ -201,7 +251,7 @@ We thank EleutherAI for their work on the [lm-evaluation harness](https://github
 
 ## Cite as
 
-```
+````
 @misc{bigcode-evaluation-harness,
   author       = {Ben Allal, Loubna and
                   Muennighoff, Niklas and
@@ -214,4 +264,4 @@ We thank EleutherAI for their work on the [lm-evaluation harness](https://github
   howpublished = {\url{https://github.com/bigcode-project/bigcode-evaluation-harness}},
   year = 2022,
 }
-```
+````
