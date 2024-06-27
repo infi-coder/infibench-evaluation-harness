@@ -4,33 +4,141 @@
 
 <h4 align="center">The InfiCoder Team</h4>
 
-<h4 align="center"><a href="https://infi-coder.github.io/infibench/">Project Page</a></h4>
+<h4 align="center">
+    <p><a href="https://infi-coder.github.io/infibench/">Website</a> |
+    <a href="https://arxiv.org/abs/2404.07940">Report</a></p>
+</h4>
 
 
 <h4 align="center">
     <p>
-        <a href="#features">Features</a> |
-        <a href="#usage">Usage</a> |
-        <a href="#future">Contribution</a>
+        <a href="#features-and-tutorials">Features</a> |
+        <a href="#setup">Setup</a> |
+        <a href="#example">Example</a> |
+        <a href="#extension">Extension</a>
     <p>
 </h4>
 
-## Features
+## Features and Tutorials
 This repo contains the full InfiBench benchmark including both benchmark data and evaluation code. The benchmark is designed to evaluate the question-answering capabilities of code language models. 
 
 The benchmark is inspired by and forked from the [BigCode Evaluation Harness](https://github.com/bigcode-project/bigcode-evaluation-harness) framework, adding the following two main features:
 
 1. **LLM Inference on All InfiBench Questions**
 
-TODO
+The InfiBench questions are stored [here](https://github.com/infi-coder/infibench-evaluation-harness/blob/main/bigcode_eval/infibench/batched_prompts/suite_v2.1.csv). We extend the framework with a series of new tasks [here](https://github.com/infi-coder/infibench-evaluation-harness/blob/main/bigcode_eval/tasks/code_ffqa_v200.py) to support the LLM inference on these questions, supporting varies prompting templates.
+
+To conduct the model inference, one only needs to execute the following two commands in sequence:
+
+````bash
+# STEP 1: codegemma-7b-it inference as an example to conduct inference, output to the specified json file
+accelerate launch --main_process_port 25768 \
+ /opt/tiger/bigcode-evaluation-harness/main.py \
+ --model google/codegemma-7b-it --tasks code-ffqa-v2-codegemma \
+ --batch_size 2 --n_samples 30 \
+ --do_sample True --temperature 0.2 \
+ --top_p 0.9 --save_generations --save_references \
+ --trust_remote_code --generation_only --max_new_tokens 1024 \
+ --save_generations_path generations_codegemma.json --eos '<eos>' \
+ --use_auth_token 
+# STEP 2: join raw inference output with the case IDs, and output to the specified csv file, for better readabiltiy and subsequence evaluation
+python3 infibench_infer_post_processor.py generations_codegemma.json references.json codegemma_output.csv --eos '<eos>' 
+````
+
+To support more prompt templates for your model, you only need to modify [bigcode_eval/tasks/code_ffqa_v200.py](https://github.com/infi-coder/infibench-evaluation-harness/blob/main/bigcode_eval/tasks/code_ffqa_v200.py) (and sometimes [infibench_infer_post_processor.py](https://github.com/infi-coder/infibench-evaluation-harness/blob/main/infibench_infer_post_processor.py) for customized post-processing like trimming).
 
 2. **Response Evaluation**
 
-Featuring the execution runtime for 8 languages (Python, Javascript, Java, C, C++, Go, R, C#), given model responses, the framework can directly evaluate and output the scores along with subscores in a nice table.
+Given the responses, we provide the automatic evaluation tool, featuring the execution runtime for 8 languages (Python, Javascript, Java, C, C++, Go, R, C#). Given model responses, the tool directly evaluates and outputs the scores along with subscores in a nice table. Detail scores and runtime log are dumped to a yaml file for customized analysis.
 
-## Usage
+To run the evaluation, we first need to setup the runtime environment correctly. We provide an example bash script [infibench_eval_example.sh](https://github.com/infi-coder/infibench-evaluation-harness/blob/main/infibench_eval_example.sh) where lines 1-24 setup the environment. Then we provide [bigcode_eval/infibench/env_check.py](https://github.com/infi-coder/infibench-evaluation-harness/blob/main/bigcode_eval/infibench/env_check.py) to check whether the environment is ready.
 
-TODO
+When it is ready, the evaluation is in one command:
+````bash
+# take the codegemma_output.csv response file as an example
+python3 bigcode_eval/infibench/grader_main.py bigcode_eval/infibench/suite_v2.1.yaml codegemma_output.csv --batched --batched_cases_path bigcode_eval/infibench/batched_cases/suite_v2.1_data.csv --result_detail_path results_detail.yaml --result_summary_path result_summary.txt
+````
+
+The evaluation specification is in `bigcode_eval/infibench/batched_cases/suite_v2.1_data.csv`. The above command outputs to `results_detail.yaml` and `result_summary.txt`.
+
+Then, we can print the result summary table in a nice table to stdout and `results_table.txt` by:
+````bash
+python3 bigcode_eval/infibench/print_result_stat.py results_detail.yaml results_table.txt --case_path_prefix bigcode_eval/infibench
+````
+Note that `--case_path_prefix bigcode_eval/infibench` is necessary since all cases are stored under the `bigcode_eval/infibench/cases` directory.
+
+3. **Raw Evaluation Data**
+
+The raw model responses of our evaluation presented in the website and the report can be found in [here](https://figshare.com/account/articles/26104864).
+
+## Setup
+
+At this point, we only support Linux environment.
+
+```bash
+bash bigcode_eval/infibench/setup.sh # main script for environment installation
+export NODE_PATH=$(npm root --quiet -g)
+pip install -r requirements.txt
+```
+
+Then, you can run
+```bash
+python3 bigcode_eval/infibench/env_check.py
+```
+to check and fix the environment incompatibility according to the console output. If the console output is "`You're good to go.`", then we can proceed.
+
+## Example
+
+We provide an example bash script [infibench_eval_example.sh](https://github.com/infi-coder/infibench-evaluation-harness/blob/main/infibench_eval_example.sh) that integrates the [code-gemma-7b-it](https://huggingface.co/google/codegemma-7b-it) model inference and evaluation on InfiBench.
+
+After the execution, in both stdout and `v210_${SAVE_NAME}_table.txt` table, you will find the evaluation result showing like the following table.
+
+````
+-----------------------------------------------------------------------------------------------------------------
+                                    | google/codegemma-7b-it         |                 | Full Score | Allocation 
+------------------------------------|------------------------|-------|--------|--------|------------|------------
+ Overall Score                      | 122.36                   ±2.65 | 52.29%   ±1.13% | 234.00     |            
+ Lang: python                       | 24.02                    ±1.18 | 51.11%   ±2.52% | 47.00      | 20.09%     
+ Lang: javascript                   | 24.66                    ±0.84 | 56.04%   ±1.91% | 44.00      | 18.80%     
+ Lang: dart                         | 5.18                     ±0.76 | 27.28%   ±4.02% | 19.00      | 8.12%      
+ Lang: bash                         | 11.71                    ±1.22 | 61.63%   ±6.41% | 19.00      | 8.12%      
+ Lang: java                         | 11.46                    ±0.58 | 67.43%   ±3.39% | 17.00      | 7.26%      
+ Lang: c#                           | 5.06                     ±0.63 | 42.13%   ±5.26% | 12.00      | 5.13%      
+ Lang: css                          | 4.76                     ±0.19 | 47.56%   ±1.92% | 10.00      | 4.27%      
+ Lang: rust                         | 4.28                     ±0.42 | 42.78%   ±4.19% | 10.00      | 4.27%      
+ Lang: c++/c                        | 5.17                     ±0.58 | 51.67%   ±5.77% | 10.00      | 4.27%      
+ Lang: ruby                         | 6.00                     ±0.00 | 60.00%   ±0.00% | 10.00      | 4.27%      
+ Lang: html                         | 5.29                     ±0.34 | 58.77%   ±3.80% | 9.00       | 3.85%      
+ Lang: r                            | 4.17                     ±0.58 | 46.30%   ±6.42% | 9.00       | 3.85%      
+ Lang: php                          | 5.17                     ±0.44 | 57.41%   ±4.90% | 9.00       | 3.85%      
+ Lang: go                           | 5.44                     ±0.19 | 60.49%   ±2.14% | 9.00       | 3.85%      
+ Type: code completion              | 42.76                    ±0.40 | 57.78%   ±0.54% | 74.00      | 31.62%     
+ Type: code debugging               | 30.33                    ±2.11 | 48.14%   ±3.35% | 63.00      | 26.92%     
+ Type: knowledge question-answering | 28.98                    ±0.67 | 52.69%   ±1.22% | 55.00      | 23.50%     
+ Type: non-code debugging           | 20.29                    ±1.02 | 48.31%   ±2.42% | 42.00      | 17.95%     
+ Metric: keywords                   | 82.40                    ±2.93 | 48.78%   ±1.73% | 168.93     | 72.19%     
+ Metric: unit_test                  | 28.37                    ±0.12 | 56.73%   ±0.23% | 50.00      | 21.37%     
+ Metric: blank_filling              | 10.88                    ±0.00 | 41.86%   ±0.00% | 26.00      | 11.11%     
+ Metric: similarity                 | 2.87                     ±0.40 | 47.88%   ±6.74% | 6.00       | 2.56%      
+-----------------------------------------------------------------------------------------------------------------
+````
+
+The final score we reported is `52.29%±1.13%`.
+
+## Extension
+
+The framework can be easily expanded and we welcome any extension!
+
+- Expand the code framework:
+
+Besides the inference extension code, which lies in `bigcode_eval/tasks/code_ffqa_v200.py`. All code is located in `bigcode_eval/infibench`. We have core code in `bigcode_eval/infibench/*.py`, and some optional components in sub-folders, e.g., result analysis code in `bigcode_eval/infibench/analyze`.
+
+- Expand the question set:
+
+The question prompts are batched in `bigcode_eval/infibench/batched_prompts`. The whole question, including prompts, evaluation standards, and dependency files are batched in `bigcode_eval/infibench/batched_cases` and unfolded in `bigcode_eval/infibench/cases`.
+
+The batched cases can also be found at https://huggingface.co/datasets/llylly001/InfiBench/blob/main/suite_v2.1_data.csv.
+
 
 ## Acknowledgements
 
@@ -44,19 +152,16 @@ Some components of this framework is built upon:
 
 The execution environment is partly adapted from Humanevalpack: https://github.com/bigcode-project/bigcode-evaluation-harness/blob/main/lm_eval/tasks/humanevalpack.py.
 
-----
 The repo is forked the `main` branch of Jun 25 2024 version of `bigcode-evaluation-harness`.
 Below is the original README.md content from the repo.
+
+---
 
 <h1 align="center">Code Generation LM Evaluation Harness</h1>
 
 
 <h4 align="center">
     <p>
-        <a href="#features">Tasks</a> |
-        <a href="#setup">Usage</a> |
-        <a href="#implementing-new-tasks">Contribution</a> |
-        <a href="#documentation">Documentation</a> |
         <a href="https://huggingface.co/bigcode">BigCode</a>
     <p>
 </h4>
