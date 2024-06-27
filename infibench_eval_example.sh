@@ -12,14 +12,14 @@ pip install transformers==4.40.0 accelerate tiktoken einops scipy transformers_s
 
 cd /opt/tiger/bigcode-evaluation-harness
 
-set -e # Optional, set to interrupt the script execution when error occurred, to ensure result reliability
-mv -f /usr/bin/node /usr/bin/node_old
+set -e # Optional, set to interrupt the script execution when error occurs, to ensure result reliability
+mv -f /usr/bin/node /usr/bin/node_old # these mv's and ln's make backups for the system's default nodejs environment. If they run with errors, just comment out
 mv -f /usr/bin/npm /usr/bin/npm_old
 mv -f /usr/bin/npx /usr/bin/npx_old
 ln -s /usr/local/nvm/versions/node/v16.15.1/bin/node /usr/bin/node
 ln -s /usr/local/nvm/versions/node/v16.15.1/bin/npm /usr/bin/npm
 ln -s /usr/local/nvm/versions/node/v16.15.1/bin/npx /usr/bin/npx
-bash bigcode_eval/infibench/setup.sh
+bash bigcode_eval/infibench/setup.sh # main script for environment installation
 export NODE_PATH=$(npm root --quiet -g)
 pip install -r requirements.txt
 python3 bigcode_eval/infibench/env_check.py
