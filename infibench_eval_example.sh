@@ -7,7 +7,7 @@ export DATASET_CSV_PATH=/opt/tiger/open-freeform-code-qa-suite/batched_prompts/s
 
 # for monitoring gpu usage
 pip install gpustat
-# for qwen models
+# for installing necessary packages of the given model, please change to accomodate your model
 pip install transformers==4.40.0 accelerate tiktoken einops scipy transformers_stream_generator==0.0.4 peft
 
 cd /opt/tiger/bigcode-evaluation-harness
