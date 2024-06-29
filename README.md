@@ -69,7 +69,7 @@ Note that `--case_path_prefix bigcode_eval/infibench` is necessary since all cas
 
 3. **Raw Evaluation Data**
 
-The raw model responses of our evaluation presented in the website and the report can be found in [here](https://figshare.com/account/articles/26104864).
+The raw model responses of our evaluation presented in the website and the report can be found in [here]([https://figshare.com/account/articles/26104864](https://figshare.com/articles/dataset/InfiBench_Detail_Evaluation_Data/26104864)).
 
 ## Setup
 
