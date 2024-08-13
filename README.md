@@ -47,6 +47,8 @@ python3 infibench_infer_post_processor.py generations_codegemma.json references.
 
 To support more prompt templates for your model, you only need to modify [bigcode_eval/tasks/code_ffqa_v200.py](https://github.com/infi-coder/infibench-evaluation-harness/blob/main/bigcode_eval/tasks/code_ffqa_v200.py) (and sometimes [infibench_infer_post_processor.py](https://github.com/infi-coder/infibench-evaluation-harness/blob/main/infibench_infer_post_processor.py) for customized post-processing like trimming).
 
+*Note: The above Step 1 deploys data parallel on multiple GPUs for inference. For large LLMs (e.g., over 40B with A100-80GB GPU), a single GPU cannot run the inference and tensor partitioning is needed. In this case, we need to replace the step 1 command by `python3 /opt/tiger/bigcode-evaluation-harness/main.py ... --max_memory_per_gpu auto --reduce_batch_thres 2048`. Noticng that we discard `accelerate launch` to disable data parallel and use `max_memory_per_gpu` to activate the fsdp tensor partitioning. The `reduce_batch_thres 2048` will dynamically reduce the batch size when the input prompt length exceeds 2048 to avoid OOM.*
+
 2. **Response Evaluation**
 
 Given the responses, we provide the automatic evaluation tool, featuring the execution runtime for 8 languages (Python, Javascript, Java, C, C++, Go, R, C#). Given model responses, the tool directly evaluates and outputs the scores along with subscores in a nice table. Detail scores and runtime log are dumped to a yaml file for customized analysis.
