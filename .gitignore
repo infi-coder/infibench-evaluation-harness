@@ -173,6 +173,8 @@ playground/
 bin/tsc
 bin/tsserver
 bigcode_eval/infibench/*.key
+*.key
+*.csv
 bigcode_eval/infibench/test.*
 __pycache__/
 bigcode_eval/infibench/tmp/

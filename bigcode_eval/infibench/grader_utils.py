@@ -232,7 +232,10 @@ def similarity_assessment(response: str, similarity_metrics: List[Dict], case_di
     now_score, tot_score = 0.0, 0.0
     grading_details = []
 
-    rouge = evaluate.load('rouge')
+    try:
+        rouge = evaluate.load('rouge')
+    except:
+        rouge = evaluate.load('bigcode_eval/infibench/rouge')
     for metric in similarity_metrics:
         references = metric['references']
         passages = []

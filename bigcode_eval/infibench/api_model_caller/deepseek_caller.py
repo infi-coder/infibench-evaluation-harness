@@ -1,6 +1,6 @@
 """
-    This helper script generates answers from GPT4 / 3.5 by calling OpenAI APIs
-    Using OpenAI 0.28 APIs
+    This helper script generates answers from deepseek by calling OpenAI APIs
+    Using OpenAI 1.xx APIs
 """
 import random
 import time
@@ -8,22 +8,20 @@ import os
 import argparse
 import yaml
 from tqdm import tqdm
-import openai
-# from openai import OpenAI
+# import openai
+from openai import OpenAI
 
 parser = argparse.ArgumentParser()
 parser.add_argument('suite_path', help='File definition of the dataset suite')
-parser.add_argument('model_name', help='Model to inquiry from OpenAI',
-                    choices=["gpt-4", "gpt-4-0613", "gpt-4-32k", "gpt-4-32k-0613",
-                             "gpt-3.5-turbo", "gpt-3.5-turbo-0613", "gpt-3.5-turbo-16k", "gpt-3.5-turbo-16k-0613",
-                             "gpt-4o-2024-05-13"])
+parser.add_argument('model_name', help='Model to inquiry from DeepSeek',
+                    choices=["deepseek-coder", "deepseek-coder"])
 parser.add_argument('--temp', type=float, help='Sampling temperature', default=0.2)
 parser.add_argument('--top_p', type=float, help='Sampling top probability', default=0.9)
 parser.add_argument('--n', type=int, help='Sampling numbers', default=3)
 parser.add_argument('--max_tokens', type=int, help='max tokens', default=None)
 parser.add_argument('--timeout', type=int, help='timeout in seconds', default=300)
 parser.add_argument('--patience', type=int, help='failure trials', default=3)
-parser.add_argument('--key_path', help='API key to call OpenAI', default='openai_token.key')
+parser.add_argument('--key_path', help='API key to call OpenAI', default='deepseek_token.key')
 parser.add_argument('--storage', help='Directory to store the prompting result', default='responses')
 parser.add_argument('--expdir_suffix', help='Optional suffix added to the exp dir', default='')
 parser.add_argument('--system_prompt', help='Prefix prompt as the system role',
@@ -36,7 +34,8 @@ parser.add_argument('--qa_system_prompt', help='Prefix prompt as the system role
 parser.add_argument('--skip', action='store_true', help='whether to skip if already generated', default=False)
 
 
-def single_turn(client, prompt, system_prompt, model_name, temp, top_p, n, max_tokens, timeout, patience, batch=2):
+def single_turn(client, prompt, system_prompt, model_name, temp, top_p, n, max_tokens, timeout, patience, batch=1):
+    # only single batch is supported yet by deepseek API
     ans = []
     orig_patience = patience
 
@@ -59,16 +58,17 @@ def single_turn(client, prompt, system_prompt, model_name, temp, top_p, n, max_t
             patience -= 1
             attempt += 1
             try:
-                # response = client.chat.completions.create(
-                response = openai.ChatCompletion.create(
-                    model=model_name,  # supported models: gpt-35-turbo, gpt-4, gpt-4-32k, gpt-4-32k-0613
+                response = client.chat.completions.create(
+                # response = openai.ChatCompletion.create(
+                    model=model_name,  # supported models: deepseek-chat, deepseek-code
                     messages=[
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": prompt}
                     ],
                     **config
                 )
-                ans.extend([response['choices'][x]['message']['content'] for x in range(len(response['choices']))])
+                # ans.extend([response['choices'][x]['message']['content'] for x in range(len(response['choices']))])
+                ans.extend([response.choices[x].message.content for x in range(len(response.choices))])
                 break
             except Exception as e:
                 print(f'attempt {attempt} (remaining: {patience}) error:', e)
@@ -87,15 +87,15 @@ if __name__ == '__main__':
     # load openai key
     with open(args.key_path, 'r') as f:
         api_url, api_key = f.readlines()[:2]
-    api_url, api_key = api_url.strip(), api_key.strip()
-    # client = OpenAI(
-    #     api_key=api_key,
-    #     base_url=api_url
-    # )
-    openai.api_type = "azure"
-    openai.api_base = api_url
-    openai.api_version = "2023-06-13"
-    openai.api_key = api_key
+        api_url, api_key = api_url.strip(), api_key.strip()
+    client = OpenAI(
+        api_key=api_key,
+        base_url=api_url
+    )
+    # openai.api_type = "azure"
+    # openai.api_base = api_url
+    # openai.api_version = "2023-06-13"
+    # openai.api_key = api_key
 
     # create folder
     suite_basename = os.path.basename(args.suite_path)
@@ -159,7 +159,10 @@ if __name__ == '__main__':
         case_promptpath = os.path.join(os.path.dirname(case_fpath), case_promptpath)
         with open(case_promptpath, 'r') as f:
             prompt = f.read()
-        responses = single_turn(None, prompt, system_prompt, args.model_name,
+        # responses = single_turn(None, prompt, system_prompt, args.model_name,
+        #                         args.temp, args.top_p, args.n,
+        #                         args.max_tokens, args.timeout, args.patience)
+        responses = single_turn(client, prompt, system_prompt, args.model_name,
                                 args.temp, args.top_p, args.n,
                                 args.max_tokens, args.timeout, args.patience)
         if responses is not None:
