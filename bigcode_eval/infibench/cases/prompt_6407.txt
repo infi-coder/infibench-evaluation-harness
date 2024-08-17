@@ -1,0 +1,57 @@
+I defined a route in vue: 
+
+```
+/users/:userId
+```
+
+which point to UserComponent:
+
+```
+<template>
+ <div>{{username}}</div>
+</template>
+```
+
+and I use `computed` from `@vue/composition-api` to get the data. 
+
+the problem is when the route change to another `userId`, by navigate to another user, the user in the html template not changed as what I expected. also it doesn't do redirect when the the user is not in the list.
+
+So what I can do to fix that?
+
+Here is my code:
+
+```
+<template>
+  <div>{{username}}</div>
+</template>
+
+<script lang="ts">
+import { computed, defineComponent, ref, getCurrentInstance } from '@vue/composition-api';
+
+export const useUsername = ({ user }) => {
+  return { username: user.name };
+};
+
+export default defineComponent({
+  setup(props, { root }) {
+    const vm = getCurrentInstance();
+
+    const userToLoad = computed(() => root.$route.params.userId);
+    const listOfUsers = [
+      { userId: 1, name: 'user1' },
+      { userId: 2, name: 'user2' },
+    ];
+
+    const user = listOfUsers.find((u) => u.userId === +userToLoad.value);
+    if (!user) {
+      return root.$router.push('/404');
+    }
+
+    const { username } = useUsername({ user });
+
+    return { username };
+  },
+});
+
+</script>
+```

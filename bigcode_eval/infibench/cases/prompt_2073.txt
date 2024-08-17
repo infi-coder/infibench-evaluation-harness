@@ -1,0 +1,1 @@
+In Flutter, I want to delete all saved shared preferences when the user taps on logout. Are there any ways to do this in a single shot without deleting one by one?

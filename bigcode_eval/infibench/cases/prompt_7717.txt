@@ -1,0 +1,49 @@
+
+I was using the google maps api and location pub,dev package in my android flutter app, and tried to bring up an image using the url from the api.
+This was the url with some code:
+```
+class LocationHelper{
+  static String mapviewpointer({double latitude, double longitude}){
+    return "https://maps.googleapis.com/maps/api/staticmap?center=$latitude,$longitude&zoom=13&size=600x300&maptype=roadmap&markers=color:pink%7Clabel:C%7C$latitude,$longitude&key=$GOOGLE_API_KEY";
+  }
+}
+```
+
+it threw the following error message:
+`Plugin project :location_web not found. Please update settings.gradle;`
+I'm not sure how to fix this error.
+This was the other error I received in my terminal:
+```
+I/flutter (21880): Invalid argument(s): No host specified in URI file:///Instance%20of%20'Future%3CString%3E'
+```
+
+The Area in which I get the error message above is here in my code:
+```
+Future <String> _getUserLocation() async{
+  final locData = await Location().getLocation();
+  final staticMapUrl = LocationHelper.mapviewpointer(
+    latitude: locData.latitude, 
+    longitude: locData.longitude,
+    );
+    return staticMapUrl;
+}
+
+final mapview = _getUserLocation();
+
+
+class NearbyScreen extends StatelessWidget {
+  @override
+  //LocationHelper.mapviewpointer(latitude: )
+  
+  Widget build(BuildContext context) {
+    return  Column(
+            children: <Widget>[
+              Container(height:170, width: double.infinity,
+              child:Image.network(mapview.toString())
+              ),
+              Text("hello"),
+            ],
+          );
+  }
+}
+```

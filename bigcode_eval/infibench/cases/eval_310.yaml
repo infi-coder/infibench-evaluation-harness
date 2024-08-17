@@ -1,0 +1,13 @@
+id: 310
+prompt_path: prompt_310.txt
+type: code completion
+lang: javascript
+grading:
+  unit_test:
+    tests:
+      - content: "function gt() {\n
+           date = new Date();\n
+           return ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear();\n
+         }\n
+         console.assert(getCurrentDate() == gt())"
+        prefix: "function getCurrentDate() {\n"

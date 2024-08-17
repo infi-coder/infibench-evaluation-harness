@@ -1,0 +1,4 @@
+
+I made all permission reserved personal access token on github.I saw that```git clone https://<username>:<personal_access_token>@github.com/<username>/<project_name>.git```
+works.So How can I clone, commit, and push using personal access tokens?Like this```cd /tmpgit clone https://<username>:<personal_access_token>@github.com/<username>/<project_name>.git
+cd /tmp/auto_tutorialgit commit --allow-empty -m 'Trigger notification'git push https://<username>:<personal_access_token>@github.com/<username>/<project_name>.git master```

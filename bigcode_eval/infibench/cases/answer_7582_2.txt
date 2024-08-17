@@ -1,0 +1,10 @@
+For Mac:
+
+1. Open Keychain Access
+2. Select Login
+3. Select Passwords and search for GitHub
+4. Double-click github.com
+5. Check the show password box
+6. Replace the password with your personal access token
+7. Save the changes
+8. Try git commit or git push, it should be working now!

@@ -1,0 +1,23 @@
+id: 789
+prompt_path: prompt_789.txt
+type: code completion
+lang: python
+grading:
+  unit_test:
+    tests:
+      - path: test_789_0.py # executable
+        prefix_path: test_789_prefix.py
+        timeout: 60
+        cleanup_path: test_789_cleanup.py
+      - path: test_789_1.py # two loaders exists?
+        prefix_path: test_789_prefix.py
+        timeout: 60
+        cleanup_path: test_789_cleanup.py
+      - path: test_789_2.py # two loaders have expected sizes?
+        prefix_path: test_789_prefix.py
+        timeout: 60
+        cleanup_path: test_789_cleanup.py
+      - path: test_789_3.py # two loaders store different instances?
+        prefix_path: test_789_prefix.py
+        timeout: 60
+        cleanup_path: test_789_cleanup.py

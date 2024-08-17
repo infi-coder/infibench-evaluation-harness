@@ -1,0 +1,10 @@
+Could you write me a Python function `plot_confusion_matrix(matrix: list[list[int]], x_labels: list[str], y_labels: list[str])` that returns a `plotly` figure object containing an annotated heatmap. The annotation within each cell is exactly the number of corresponding matrix cell value.
+
+Please start by completing the following function:
+
+```
+import plotly.figure_factory as ff
+import kaleido
+
+def plot_confusion_matrix(matrix: list[list[int]], x_labels: list[str], y_labels: list[str])
+```

@@ -1,0 +1,18 @@
+id: 5174
+prompt_path: prompt_5174.txt
+type: code debugging
+lang: python
+grading:
+  keywords:
+    - content:
+        or:
+          - conda install
+          - python=3.6
+      to_lower: true
+    - content:
+        content: "sys.path.append\\(\\S*/usr/local/lib/python3.6/site-packages\\S*"
+        regex: true
+    - content:
+        content: os.environ
+        cond: "context[-1] == 'match'"
+      neg: true

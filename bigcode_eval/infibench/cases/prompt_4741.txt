@@ -1,0 +1,7 @@
+I've lost a day's work in Jupyter Notebook because it didn't autosave. As I was working, I would click on `File` > `Save and Checkpoint` to be safe. I closed the notebook when I finished working and when I tried reopening it, I see that essentially all my work is gone and it says `Last Checkpoint: a day ago (autosaved)` next to the filename. I now realize that I had been working for a long time on the notebook with an orange box with some kind of error message. I'm sorry that I can't remember the specific message right now, but I think it was something involving `POS` or `POST` or `POSIT` ...?. I saw `Trusted` next to the error message, so I must've thought things were OK.
+
+I tried opening the `filename-checkpoint.ipynb` file within the `.ipynb_checkpoints` folder but it's blank. I looked up a possible solution but it requires SQL, which I don't know. Is there any hope for recovering my work? I realize that this is probably a rookie mistake, but I'm pretty new at this.
+
+Thanks.
+
+PS: I'm running Python3 on MacOS

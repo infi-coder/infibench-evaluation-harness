@@ -1,0 +1,14 @@
+id: 6495
+prompt_path: prompt_6495.txt
+type: code completion
+lang: python
+grading:
+  unit_test:
+    tests:
+      - path: test_6495_0.py
+        cleanup_path: test_6495_cleanup.py
+  keywords:
+    - content:
+        and:
+          - create_annotated_heatmap(
+          - "```"

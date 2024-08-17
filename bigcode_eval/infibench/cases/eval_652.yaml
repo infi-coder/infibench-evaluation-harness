@@ -1,0 +1,12 @@
+id: 652
+prompt_path: prompt_652.txt
+type: knowledge question-answering
+lang: python
+grading:
+  keywords:
+    - '```'
+    - content: '#%%'
+      weight: 2
+    - content: 'run cell'
+      weight: 2
+      to_lower: true

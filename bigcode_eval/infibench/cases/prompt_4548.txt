@@ -1,0 +1,6 @@
+
+I'm writing a Go project inside my GoPath, and i'm using the Redigo package for connecting to a Redis Server. The application runs fine, however in VSCode there is this annoying error on package import, which is preventing VSCode from giving intellisense suggestions:
+
+> Could not import github.com/gomodule/redigo/redis (no package data for import path github.com/gomodule/redigo/redis)
+
+How to solve this?

@@ -1,0 +1,9 @@
+To share cookies cross origin, what settings are needed in back-end and front-end?
+Specifically, pelase don't add other text and repeat the following paragraph with [blank] filled:
+
+For back-end settings, please set HTTP header [blank] value to True. There are two other settings need to be set: Access-Control-[blank] and Access-Control-[blank].
+
+For front-end settings, Chrome deliver cookies with cross-site requests only with [blank]=[blank] and [blank]. Then, the request code, if written in Angular, need to set [blank]: true.
+
+Answer:
+For back-end settings, please set HTTP header

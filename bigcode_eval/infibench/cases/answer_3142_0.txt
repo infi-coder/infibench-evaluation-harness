@@ -1,0 +1,36 @@
+ForEach is a view that lets you pass a collection of data to its initializer and then creates multiple "subviews" from the closure you provide. It doesn't have any semantics on how the views will be arranged.
+
+Example:
+  ForEach(1..<5) { row in
+      Text("Row \(row)")
+  }
+will create the equivalent off
+
+  Text("Row 1")
+  Text("Row 2")
+  Text("Row 3")
+  Text("Row 4")
+
+wrapped in a single container view.
+
+List is a view that can compose multiple views together, but not necessarily views of the same type. You can simply add multiple views without any loop.
+
+Example 1:
+  List {
+      Image("avatar")
+      Text("Title")
+      Button(action: {
+          print("Button tapped!")
+      }) {
+          Text("Energize!")
+      }
+  }
+As a convenience, the List initializer allows you to use it just like the ForEach view in case you want to have a list consisting of a single cell type only.
+
+Example 2:
+  List(1..<5) { row in
+      Text("Row \(row)")
+  }
+A list has a special appearance, depending on the platform. For example, on iOS a list will appear as a table view and insert separator lines between its vertically stacked views.
+
+You can use ForEach views inside List views to have both dynamic and static content – a very powerful feature of SwiftUI.

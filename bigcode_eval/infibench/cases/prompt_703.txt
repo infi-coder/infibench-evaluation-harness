@@ -1,0 +1,73 @@
+
+I'm working with Angular CLI and angular material v.5.2.5
+and trying to use `mat-icon-button` but such an error produced by the console:
+> Uncaught Error: Template parse errors: 'mat-icon' is not a known
+element...
+
+if I use `mat-raised-button` everything works fine cannot figure out how to solve that
+
+index.html
+```
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Todo</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+```
+
+main.ts
+```
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.log(err));
+```
+
+app.module.ts
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { MatButtonModule } from '@angular/material/button';
+
+
+import { AppComponent } from './app.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    MatButtonModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+Could you tell me what is missing in which file?

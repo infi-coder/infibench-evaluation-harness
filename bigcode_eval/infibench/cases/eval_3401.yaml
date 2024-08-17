@@ -1,0 +1,10 @@
+id: 3401
+prompt_path: prompt_3401.txt
+type: knowledge question-answering
+lang: web
+grading:
+  keywords:
+    - content: npm run build
+      weight: 2.0
+    - npm run generate
+  max_score: 2.0

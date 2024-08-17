@@ -1,0 +1,38 @@
+How do I split a custom dataset into training and test datasets?
+
+The dataset is created with following code:
+
+
+```
+import pandas as pd
+import numpy as np
+from torch.utils.data.dataset import Dataset
+
+
+class CustomDatasetFromCSV(Dataset):
+    def __init__(self, csv_path, transform=None):
+        self.data = pd.read_csv(csv_path)
+        try:
+            self.labels = pd.get_dummies(self.data['emotion']).as_matrix()
+        except Exception:
+            self.labels = pd.get_dummies(self.data['emotion']).values
+        self.height = 48
+        self.width = 48
+        self.transform = transform
+
+    def __getitem__(self, index):
+        pixels = self.data['pixels'][index]
+        faces = []
+        face = np.asarray(eval(pixels)).reshape(self.width, self.height)
+        faces.append(face.astype('float32'))
+        faces = np.asarray(faces)
+        faces = np.expand_dims(faces, -1)
+        return faces, self.labels[index]
+
+    def __len__(self):
+        return len(self.data)
+
+dataset = CustomDatasetFromCSV(my_path)
+```
+
+Could you split the dataset into training set and validation set with no overlap? The training set has 80% samples and validation set has 20% samples. You should only output the appended code. Store the training set in variable `train_loader` and the validation set in variable `validation_loader`.

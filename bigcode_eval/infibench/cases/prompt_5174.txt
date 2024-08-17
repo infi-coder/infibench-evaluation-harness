@@ -1,0 +1,28 @@
+
+I try to install packages from anaconda to google's colab.
+
+But it doesn't work. The whole thing is voodoo magic.
+
+The following code is in one cell.
+
+Notebook's cell:
+
+```
+!wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+!bash Miniconda3-latest-Linux-x86_64.sh -b -f -p /usr/local/
+!rm Miniconda3-latest-Linux-x86_64.sh
+!conda install -y --prefix /usr/local/ ujson aiohttp tqdm
+import sys
+os.environ['PYTHONPATH'] = "/usr/local/miniconda3"
+os.environ['PATH'] = '/usr/local/miniconda3/bin:' + os.environ['PATH']
+sys.path.append('/usr/local/lib/python3.6/site-packages/')
+import ujson
+```
+
+Result:
+
+```
+ModuleNotFoundError: No module named 'ujson'
+```
+
+Could you change the commands in above notebook's cell to successfully import ujson module?

@@ -1,0 +1,7 @@
+I would like VSCode to IntelliSense the module path so I can access it by click.
+
+For example, after configurating `jsconfig.json` I'm able to access `./src/styled/index` by importing its global path.
+
+But I couldn't figure out how to make it work with an alias `@styles`
+
+What should I do?

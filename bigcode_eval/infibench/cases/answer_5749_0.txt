@@ -1,0 +1,10 @@
+
+
+Records are not the place to look for getters/setters syntactical sugar, as they are not meant to replace JavaBeans.
+I strongly agree with you that JavaBeans are too verbose. Maybe an additional feature (called beans instead of records) could be implemented - very similar behavior with the records feature but that would permit mutability. In that case, records and beans would not be mutually exclusive.
+As it has been mentioned, records are in preview mode. Let's see what the feedback from community would be.
+All in all, IMHO they are a step forward. I wrote an example set where you can see a code reduction to ~15% LOC from standard JavaBeans.
+
+Also, note that records behave like normal classes: they can be declared top level or nested, they can be generic, they can implement interfaces (from the same document). You can actually partly simulate JavaBeans (only getters would make sense, though) by extracting an interface containing the getters - however that would be a lot of work and not a really clean solution.
+
+So, based on the logic above, to address your question, no - I didn't see any (semi)official guideline for getters and setters and I don't think that there is a motivation for it right now because records are not a replacement for JavaBeans.

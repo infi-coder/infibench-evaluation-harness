@@ -1,0 +1,10 @@
+id: 1493
+prompt_path: prompt_1493.txt
+type: code debugging
+lang: python
+grading:
+  unit_test:
+    tests:
+      - 'assert copy_from_file_list is not None'
+      - path: 'test_1493_true.py'
+        cleanup_path: 'test_1493_cleanup.py'

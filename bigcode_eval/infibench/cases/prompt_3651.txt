@@ -1,0 +1,9 @@
+I would like to convert a `matploblib.fig` to a `PIL.Image` without saving the `fig` to disk and then opening that file. Could you help me complete the following code:
+
+```
+from matplotlib import pyplot as plt
+from PIL import Image
+
+def transform(input: plt.Figure) -> PIL.Image
+```
+

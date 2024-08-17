@@ -1,0 +1,2 @@
+What is the difference between List and ForEach in SwiftUI? 
+I know SwiftUI does not support currently regular for loops but instead provide something called ForEach but what is the difference between that and a List?

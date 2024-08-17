@@ -1,0 +1,14 @@
+I am developing an Android app with Kotlin, and I would like to use getSize() method to get the screen height. However, with API level above 30 the method getSize() is declared deprecaed. What can be used instead of getSize() for obtain screen heights? Could you help me finish the following functon?
+
+```
+val wm = fragmentActivity.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+
+fun getWidthHeight(wm: WindowManager): Int {
+    val windowMetrics = wm.currentWindowMetrics
+    val windowInsets: WindowInsets = windowMetrics.windowInsets
+
+    val insets = windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.navigationBars() or WindowInsets.Type.displayCutout())
+    val insetsHeight = insets.top + insets.bottom
+
+    val b = windowMetrics.bounds
+    val orig_height = b.height()

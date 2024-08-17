@@ -1,0 +1,19 @@
+id: 5864
+prompt_path: prompt_5864.txt
+type: knowledge question-answering
+lang: javascript
+grading:
+  keywords:
+    - content:
+        or:
+          - EventEmitter
+          - componentDidUpdate
+          - useEffect
+      weight: 2.0
+    - "```" # exists code example
+    - content:
+        or:
+          - context
+          - provider
+        cond: "context[-1] == 'unmatch' and context[-2] == 'unmatch'"
+  max_score: 3

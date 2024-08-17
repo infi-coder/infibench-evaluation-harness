@@ -1,0 +1,19 @@
+id: 7377
+prompt_path: prompt_7377.txt
+type: code completion
+lang: python
+grading:
+  unit_test:
+    tests:
+      - path: test_7377_0.py
+        cleanup_path: test_7377_cleanup.py
+        weight: 2.0
+        prefix_path: test_7377_prepare.py
+  keywords:
+    - plt.hist
+    - content:
+        content: 'bins.*=.*20'
+        regex: true
+    - content:
+        content: 'savefig(.*figure.pdf.*)'
+        regex: true

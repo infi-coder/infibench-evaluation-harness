@@ -1,0 +1,7 @@
+Just push using your remote's name
+
+i.e.: git push origin master
+
+You can use git remote -v to check current remotes list.
+
+When you clone using an address with personal access token, it gets added to this list.

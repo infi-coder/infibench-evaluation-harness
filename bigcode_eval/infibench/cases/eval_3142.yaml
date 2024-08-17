@@ -1,0 +1,9 @@
+id: 3142
+prompt_path: prompt_3142.txt
+type: knowledge question-answering
+lang: swift
+grading:
+  similarity:
+    - metric: rougeLsum
+      references:
+        - path: answer_3142_0.txt

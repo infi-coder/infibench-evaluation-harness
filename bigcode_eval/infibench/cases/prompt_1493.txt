@@ -1,0 +1,27 @@
+I have a list called `fileList` containing thousands of filenames and sizes like this:
+
+```
+['/home/rob/Pictures/some/folder/picture one something.jpg', '143452']
+['/home/rob/Pictures/some/other/folder/pictureBlah.jpg', '473642']
+['/home/rob/Pictures/folder/blahblahpicture filename.jpg', '345345']
+```
+
+I want to copy the files using item[0] for each item in `fileList` as the source but to another folder destination. I use
+```
+for item in fileList:
+    copyfile(item[0], "/Users/username/Desktop/testPhotos")
+```
+
+but get an error
+
+```
+IsADirectoryError: [Errno 21] Is a directory: '/Users/username/Desktop/testPhotos'
+```
+
+Could you complete the function `copy_from_file_list` below to finish the task?
+
+```
+from shutil import copyfile
+
+def copy_from_file_list(fileList, destFolder):
+```

@@ -1,0 +1,28 @@
+I want to import an image in Typescript. Here is the `main.ts` file: 
+
+```
+import * as Logo from 'assets/images/logo.png';
+```
+
+HTML file `main.html`:
+
+```
+<img src={Logo} alt="" />
+```
+
+
+The type definition in `d.ts` file is:
+
+```
+declare module "*.png" {
+  const value: string;
+  export default value;
+}
+```
+
+I get the error: 
+```
+[ts] Types of property 'src' are incompatible. Type 'typeof import("*.png")' is not assignable to type 'string | undefined'. Type 'typeof import("*.png")' is not assignable to type 'string'. 
+```
+
+Please answer in the following format: I should modity [name] file to ```[code]```

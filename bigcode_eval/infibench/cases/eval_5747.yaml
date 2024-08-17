@@ -1,0 +1,11 @@
+id: 5747
+prompt_path: prompt_5747.txt
+type: code debugging
+lang: javascript
+grading:
+  keywords:
+    - sudo apt-get install chromium-browser
+    - content:
+        content: "await puppeteer.launch\\({\\s*executablePath: '.*chromium.*'"
+        regex: true
+      to_lower: true

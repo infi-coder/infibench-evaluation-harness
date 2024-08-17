@@ -1,0 +1,1 @@
+Looks like it does not like to build to another drive letter. i.e. Key store path is on D: and destination folder on E:. Note that the file seems to be produced on E: anyway. When I change destination folder to D:, it's all ok.

@@ -1,0 +1,12 @@
+id: 8143
+prompt_path: prompt_8143.txt
+type: code completion
+lang: javascript
+grading:
+  keywords:
+    - content:
+        content: '<div .*ngIf=.*myform.*Schedule.* ==.*abc.*>*</div>' # rough match
+        regex: true
+    - content:
+        content: '<div .*ngIf="myform.value.Schedule' # exact match
+        regex: true

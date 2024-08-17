@@ -1,0 +1,2 @@
+I have seen a lot of specific posts to particular case-specific problems, but no fundamental motivating explanation. What does this error:
+```RuntimeError: CUDA error: device-side assert triggered``` mean? Specifically, what is the assert that is being triggered, why is the assert there, and how do we work backwards to debug the problem?

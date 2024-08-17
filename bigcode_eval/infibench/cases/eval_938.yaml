@@ -1,0 +1,13 @@
+id: 938
+prompt_path: prompt_938.txt
+type: code debugging
+lang: web
+grading:
+  blank_filling:
+    template: "I should modify [blank] file to ```typescript[blank]```"
+    escape: " '\"\n`"
+    targets:
+      - 'd.ts'
+      - content:
+        - 'declare module "*.png" {\n  const value: any;\n  export default value;\n}'
+        - 'declare module "*.png" {\n  const value: any;\n  export = value;\n}'

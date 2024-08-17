@@ -1,0 +1,25 @@
+id: 4548
+prompt_path: prompt_4548.txt
+type: code debugging
+lang: go
+grading:
+  keywords:
+    - go get github.com/gomodule/redigo/redis
+    - content:
+        and:
+          - or:
+              - ctrl(.*)+(.*)shift(.*)+(.*)p
+              - cmd(.*)+(.*)shift(.*)+(.*)p
+          - or:
+              - update
+              - install
+      to_lower: true
+    - content:
+        or:
+          - restart
+          - content: re[-]?open
+            regex: true
+    - content:
+        or:
+          - go work init
+          - go mod init

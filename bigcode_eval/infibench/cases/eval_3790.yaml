@@ -1,0 +1,15 @@
+id: 3790
+prompt_path: prompt_3790.txt
+type: knowledge question-answering
+lang: web
+grading:
+  keywords:
+    - content:
+        or:
+          - "swagger-codegen-cli"
+          - "swagger-codegen-maven-plugin"
+    - content:
+        or:
+          - "swagger-maven-plugin"
+          - "swagger-cli"
+        cond: "context[-1] == 'match'"

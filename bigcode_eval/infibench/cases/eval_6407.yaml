@@ -1,0 +1,13 @@
+id: 6407
+prompt_path: prompt_6407.txt
+type: code debugging
+lang: javascript
+grading:
+  keywords:
+    - content:
+        or:
+          - useRoute
+          - content: 'from \S+vue-router\S+'
+            regex: true
+      weight: 2.0
+    - watchEffect

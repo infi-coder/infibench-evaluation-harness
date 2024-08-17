@@ -1,0 +1,11 @@
+id: 4310
+prompt_path: prompt_4310.txt
+type: code debugging
+lang: javascript
+grading:
+  keywords:
+    - restart
+    - '"include"'
+    - content:
+        content: '\S*script.preferences.importModuleSpecifier": "non-relative"'
+        regex: true

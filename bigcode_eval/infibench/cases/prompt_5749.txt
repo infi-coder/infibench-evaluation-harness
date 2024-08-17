@@ -1,0 +1,5 @@
+Java 14 introduced records feature. Record creates getter with the same name as field, so one would write `print(person.name())` for example. But old Java bean convention dictates that one should name this method as `getName()`.
+
+Using both styles in the same code base does not look very nice. Migrating everything to records is not possible, as they are too limited to replace all use-cases.
+
+Is there any official or semi-official guidelines how to name getters and setters after Java 14 in new code?

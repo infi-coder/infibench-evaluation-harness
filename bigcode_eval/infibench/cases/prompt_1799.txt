@@ -1,0 +1,1 @@
+In Javascript, I would like to convert a Date object with date and time in local timeszone to UTC date. Could you write a function to accomplish this? The function name is `convertToUTC()`. It receices a Date object and returns a Date object too.

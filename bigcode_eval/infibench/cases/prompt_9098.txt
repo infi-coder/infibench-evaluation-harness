@@ -1,0 +1,14 @@
+I am using Laravel 8 and I have installed InertiaJS, but in my directory `resources/views/` I have a single file called `index.blade.php` which I plan to use with InertiaJS. By default, InertiaJS looks for a file inside that directory called `app.blade.php`. Here I search an answer with middleware but keywords are hidden by [blank]. Could you repeat the answer below exactly but with [blank] filled?
+
+Inertia introduced middleware to handle your Inertia requests.
+As described in the answers below, you can use the command [blank] to generate this middleware. You can set the root index with:
+```
+// Set root template via property protected 
+[blank] = 'index'; 
+
+// OR 
+// Set root template via method 
+public function [blank](Request $request) {
+  return '[blank]';
+}
+```

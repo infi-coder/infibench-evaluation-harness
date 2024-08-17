@@ -1,0 +1,42 @@
+This query is for react-navigation 5.  
+
+In react navigation 4 we could pass a function as a param while navigating but in react navigation 5, it throws a warning about serializing params.  
+
+Basically, what I am trying to do is, navigate to a child screen from parent screen, get a new value and update the state of the parent screen.  
+
+Following is the way I am currently implementing:  
+  
+
+```
+_onSelectCountry = (data) => {
+    this.setState(data);
+};
+.
+.
+.
+.
+<TouchableOpacity
+    style={ styles.countrySelector }
+    activeOpacity={ 0.7 }
+    onPress={ () => Navigation.navigate("CountrySelect",
+        {
+             onSelect: this._onSelectCountry,
+             countryCode: this.state.country_code,
+        })
+    }
+>
+</TouchableOpacity>
+```
+  
+
+```
+_onPress = (country, country_code, calling_code) => {
+    const { navigation, route } = this.props;
+    navigation.goBack();
+    route.params.onSelect({
+        country_name: country,
+        country_code: country_code,
+        calling_code: calling_code
+    });
+};
+```

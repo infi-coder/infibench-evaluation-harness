@@ -1,0 +1,14 @@
+I have a project in my local created with springBoot, java, jHipster, Angular, etc and I want to run it. Usually I have used mvnw to run the project. Now I changed computer so when running mvnw in cmd it says app running in https://localhost:8080 and when I go to this link I cannot have access to the app.
+
+This is the message:
+
+```
+This site can’t provide a secure connection
+localhost sent an invalid response.
+Try running Windows Network Diagnostics.
+ERR_SSL_PROTOCOL_ERROR
+```
+
+Maybe I need to install apache so I can access to the projects in localhost? I do not remember if I had apache installed in my old pc wheer I could access to the app.
+
+I did `netstat -ano | findstr 8080` in cmd and found in task manager that port 8080 is used by java.exe. Maybe it is a port issue?

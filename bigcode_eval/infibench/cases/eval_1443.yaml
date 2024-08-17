@@ -1,0 +1,13 @@
+id: 1443
+prompt_path: prompt_1443.txt
+type: code debugging
+lang: web
+grading:
+  keywords:
+    - content:
+        or:
+          - content: "use http protocol"
+          - content: 'http://localhost:8080'
+          - content: "(not|don't) need (.+) ssl certficate"
+            regex: true
+      to_lower: true

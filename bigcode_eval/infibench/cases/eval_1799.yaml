@@ -1,0 +1,8 @@
+id: 1799
+prompt_path: prompt_1799.txt
+type: code completion
+lang: javascript
+grading:
+  unit_test:
+    tests:
+      - "date = new Date(); console.assert( convertToUTC(date).toISOString() == (new Date(date.getTime() + (date.getTimezoneOffset() * 60000)).toISOString()) );"

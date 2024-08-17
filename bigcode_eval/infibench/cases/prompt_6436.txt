@@ -1,0 +1,58 @@
+I had setup a basic project with angular9, angular material and angular/flex-layout. How ever I cannot get angular/flex-layout working in `login-view` component. Here is `app.module.ts`:
+
+
+```
+import { reducers } from './ngrx/app-reducer';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { CoreModule } from './core/core.module';
+import { State, StoreModule } from '@ngrx/store';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule  } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
+import { metaReducers } from './ngrx/app-reducer'
+import { AuthModule } from './features/auth/auth.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [  
+    CoreModule,
+    AuthModule,
+    AppRoutingModule,
+    MaterialModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    StoreModule.forRoot(
+      reducers, { 
+        metaReducers,
+        runtimeChecks:{
+          strictStateImmutability:true,
+          strictActionImmutability: true,
+          strictActionSerializability:true,
+          strictStateSerializability: true
+        } 
+      }
+    ),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    // this is going to initialize the global services for ngrx and add them to the application
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router',
+      routerState:RouterState.Minimal
+    })
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```

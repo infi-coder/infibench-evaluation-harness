@@ -1,0 +1,8 @@
+In SQL, I use an early version of SQL server which does not have TRIM function. Could you write down a TRIM function implementation to so the following code works:
+
+```
+DECLARE @ss varchar(60)
+  SET @ss = 'admin'
+
+  select TRIM(@ss)
+```

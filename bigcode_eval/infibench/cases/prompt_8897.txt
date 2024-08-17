@@ -1,0 +1,53 @@
+I am getting exception:
+```
+FactoryBean threw exception on object creation; nested exception is java.lang.IllegalStateException: No Feign Client for loadBalancing defined. Did you forget to include spring-cloud-starter-netflix-ribbon?
+    at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:178)
+    at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:101)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1654)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1174)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:257)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:224)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1012)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:338)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:333)
+    at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1105)
+    at com.hsbc.gbgcf.spartan.referencedatabase.UserRegistrationApplication.main(UserRegistrationApplication.java:57)
+```
+
+when executing my project. My pom.xml contains
+```
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-openfeign</artifactId>
+  </dependency>
+```
+
+I am using feign client in other projects of mine as well without any additional dependency of ribbon and these are working with same spring-boot version 2.0.8
+I have referred StackOverflow for same issue and they have asked to add additional dependency of ribbon. I have tried adding same in my pom.xml but it didn't helped.
+FeignClient interface is,
+```
+@FeignClient(value = "user-service", decode404 = true)
+public interface UserFeignClient {
+
+    @PostMapping("/do-something")
+    void doSomething();
+}
+```
+
+Main class code:
+```
+@Configuration
+@EnableAspectJAutoProxy
+@EnableFeignClients
+@EnableDiscoveryClient
+@SpringBootApplication(scanBasePackages = {"test.user"})
+public class UserRegistrationApplication{
+ public static void main(String[] args) {
+        UserFeignClient userFeignClient = applicationContext.getBean(UserFeignClient.class);
+        userFeignClient.doSomething();
+        System.exit(SpringApplication.exit(applicationContext));
+    }
+}
+```
+
+I am using Sprint Boot version 2.0.8.

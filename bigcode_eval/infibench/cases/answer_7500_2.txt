@@ -1,0 +1,3 @@
+For generating .aab bundle file, your bundle file destination must be in the same drive as where your project is located. For .aab files the key store location is not relevant.
+
+For example, if your project is somewhere in drive "D:..." then your bundle file location must be somewhere in drive "D:...".

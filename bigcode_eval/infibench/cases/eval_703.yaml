@@ -1,0 +1,13 @@
+id: 703
+prompt_path: prompt_703.txt
+type: code debugging
+lang: web
+grading:
+  keywords:
+    - app.module.ts
+    - MatIconModule
+    - content:
+        content: "import {(.)*MatIconModule(.)*} from (.)+"
+        regex: true
+
+

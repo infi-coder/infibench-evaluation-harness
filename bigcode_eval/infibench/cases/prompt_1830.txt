@@ -1,0 +1,2 @@
+In Flutter, is there a way to customize `BottomNavigationBar`'s height?
+I currently have a `BottomNavigationBar` with tabs to taps/swipe navigate, however the default height (even after reducing the text and icon) is too high.

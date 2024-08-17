@@ -1,0 +1,15 @@
+id: 8917
+prompt_path: prompt_8917.txt
+type: code completion
+lang: mobile
+grading:
+  keywords:
+    - return
+    - content:
+        content: orig_height - insetsHeight # match: +1, not match: -1
+      weight: 2.0
+    - content:
+        content: ''
+      neg: true
+  max_score: 2.0
+  min_score: 0.0

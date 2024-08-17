@@ -1,0 +1,26 @@
+id: 208
+prompt_path: prompt_208.txt
+type: knowledge question-answering
+lang: web
+grading:
+  blank_filling:
+    template: "For back-end settings, please set HTTP header [blank] value to True. There are two other settings need to be set: Access-Control-[blank] and Access-Control-[blank].
+
+For front-end settings, Chrome deliver cookies with cross-site requests only with [blank]=[blank] and [blank]. Then, the request code, if written in Angular, need to set [blank]: true."
+    prefix: "Answer:
+For back-end settings, please set HTTP header"
+    targets:
+      - "Access-Control-Allow-Credentials"
+      - content:
+        - "Allow-Origin"
+        - "Allow-Headers"
+      - content:
+        - "Allow-Headers"
+        - "Allow-Origin"
+      - "SameSite"
+      - "None"
+      - content:
+        - "Secure"
+        - content: "SameSite=None"
+          cond: 'grading_details[-1].startswith("unmatched") and grading_details[-2].startswith("unmatched")'
+      - "withCredentials"

@@ -1,0 +1,11 @@
+id: 4741
+prompt_path: prompt_4741.txt
+type: code debugging
+lang: python
+grading:
+  keywords:
+    - ipython
+    - content:
+        or:
+          - page up
+          - "%history"

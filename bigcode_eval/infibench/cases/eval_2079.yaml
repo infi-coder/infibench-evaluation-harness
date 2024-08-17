@@ -1,0 +1,20 @@
+id: 2079
+prompt_path: prompt_2079.txt
+type: code debugging
+lang: sql
+grading:
+  keywords:
+    - content:
+        content: "TRIM"
+      weight: 1.0
+    - content:
+        content: "```"
+      weight: 1.0
+    - content:
+        and:
+          - content: "create function"
+          - content: "ltrim"
+          - content: "rtrim"
+      to_lower: true
+      weight: 5.0
+

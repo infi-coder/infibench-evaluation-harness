@@ -1,0 +1,11 @@
+id: 7500
+prompt_path: prompt_7500.txt
+type: code debugging
+lang: mobile
+grading:
+  similarity:
+    - metric: rougeLsum
+      references:
+        - path: answer_7500_0.txt
+        - path: answer_7500_1.txt
+        - path: answer_7500_2.txt

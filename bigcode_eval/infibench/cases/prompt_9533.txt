@@ -1,0 +1,19 @@
+I encountered a problem with ios developemnt on xcode.
+
+```
+ld: warning: directory not found for option '-L/Users/kh/Library/Developer/Xcode/DerivedData/om-euxqzibzllbcmndwqrgthdeotiro/Build/Products/Debug-iphonesimulator/AFNetworking' ld: warning: directory not found for option '-L/Users/kh/Library/Developer/Xcode/DerivedData/om-euxqzibzllbcmndwqrgthdeotiro/Build/Products/Debug-iphonesimulator/JSONModel' ld: warning: directory not found for option '-L/Users/kh/Library/Developer/Xcode/DerivedData/om-euxqzibzllbcmndwqrgthdeotiro/Build/Products/Debug-iphonesimulator/ReactiveCocoa' ld: warning: directory not found for option '-L/Users/kh/Library/Developer/Xcode/DerivedData/om-euxqzibzllbcmndwqrgthdeotiro/Build/Products/Debug-iphonesimulator/Realm' ld: warning: directory not found for option '-L/Users/kh/Library/Developer/Xcode/DerivedData/dom-euxqzibzllbcmndwqrgthdeotiro/Build/Products/Debug-iphonesimulator/SAMKeychain' ld: warning: directory not found for option '-L/Users/kh/Library/Developer/Xcode/DerivedData/om-euxqzibzllbcmndwqrgthdeotiro/Build/Products/Debug-iphonesimulator/Sentry' ld: library not found for -lAFNetworking clang: error: linker command failed with exit code 1 (use -v to see invocation) 
+```
+
+Some Solutions I tried , and all of below didn't work which was previously suggested on StackOverflow.
+
+- Opening xcworkspace, yes I am opening that. Not the project
+- Restart xcode
+- Clean & Build multiple times.
+- Deleted pods folder, and installed pods again.
+- pod update multiple times
+- set Build Active architecture Only to Yes
+- Selected my Target, went to "Build Phases" in "Link Binary With Libraries" removed ".a" file of that library. Clean and Build.
+- Target -> Build Settings ->Other Linker Flags = $(inherited)
+- Target -> Build Settings ->Library Search Path = $(inherited)
+
+What should I do?

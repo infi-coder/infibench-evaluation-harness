@@ -1,0 +1,1 @@
+You must have the keystore file and generated APK FOLDER on the same drive.

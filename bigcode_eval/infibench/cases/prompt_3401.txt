@@ -1,0 +1,1 @@
+What npm command needs to be run if I would like to deploy my nuxtjs static website to some public hosting like GitHub pages? I have some content depended from the user, so it is better to deploy as a single page application.

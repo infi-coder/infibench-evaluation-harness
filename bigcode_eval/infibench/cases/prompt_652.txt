@@ -1,0 +1,13 @@
+When I try to run this example:
+
+```
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import numpy as np
+
+x = np.linspace(0, 20, 100)
+plt.plot(x, np.sin(x))
+plt.show()
+```
+
+I see the result in a new window. Is there any way to see the result graphs in the Visual Studio Code itself directly? If changes to code are needed, could you reply with the full changed code to me? I don't want to install Jupyter notebooks.

@@ -1,0 +1,47 @@
+
+```
+beforeAll(async () => {
+    mongo = new MongoMemoryServer();
+    const mongoURI = await mongo.getConnectionString();
+
+    await mongoose.connect(mongoURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
+});
+```
+
+
+For some reason mongodb-memory-server, doesn't work. Is there a way to make it work as it's intended?
+
+```
+$ npm run test
+
+> auth@1.0.0 test C:\Users\admin\Desktop\projects\react-node-docker-kubernetes-app-two\auth
+> jest --watchAll --no-cache
+
+2020-06-06T03:12:45.207Z MongoMS:MongoMemoryServer Called MongoMemoryServer.ensureInstance() method:
+2020-06-06T03:12:45.207Z MongoMS:MongoMemoryServer  - no running instance, call `start()` command
+2020-06-06T03:12:45.207Z MongoMS:MongoMemoryServer Called MongoMemoryServer.start() method
+2020-06-06T03:12:45.214Z MongoMS:MongoMemoryServer Starting MongoDB instance with following options: {"port":51830,"dbName":"b67a9bfd-d8af-4d7f-85c7-c2fd37832f59","ip":"127.0.0.1","storageEngine":"ephemeralForTest","dbPath":"C:\\Users\\admin\\AppData\\Local\\Temp\\mongo-mem-205304KB93HW36L9ZD","tmpDir":{"name":"C:\\Users\\admin\\AppData\\Local\\Temp\\mongo-mem-205304KB93HW36L9ZD"},"uri":"mongodb://127.0.0.1:51830/b67a9bfd-d8af-4d7f-85c7-c2fd37832f59?"}
+2020-06-06T03:12:45.217Z MongoMS:MongoBinary MongoBinary options: {"downloadDir":"C:\\Users\\admin\\Desktop\\projects\\react-node-docker-kubernetes-app-two\\auth\\node_modules\\.cache\\mongodb-memory-server\\mongodb-binaries","platform":"win32","arch":"ia32","version":"4.0.14"}
+2020-06-06T03:12:45.233Z MongoMS:MongoBinaryDownloadUrl Using "mongodb-win32-i386-2008plus-ssl-4.0.14.zip" as the Archive String
+2020-06-06T03:12:45.233Z MongoMS:MongoBinaryDownloadUrl Using "https://fastdl.mongodb.org" as the mirror
+2020-06-06T03:12:45.235Z MongoMS:MongoBinaryDownload Downloading: "https://fastdl.mongodb.org/win32/mongodb-win32-i386-2008plus-ssl-4.0.14.zip"
+2020-06-06T03:14:45.508Z MongoMS:MongoMemoryServer Called MongoMemoryServer.stop() method
+2020-06-06T03:14:45.508Z MongoMS:MongoMemoryServer Called MongoMemoryServer.ensureInstance() method:
+FAIL src/test/__test___/Routes.test.ts
+  ● Test suite failed to run
+
+    Error: Status Code is 403 (MongoDB's 404)
+
+    This means that the requested version-platform combination dosnt exist
+
+      at ClientRequest.<anonymous> (node_modules/mongodb-memory-server-core/src/util/MongoBinaryDownload.ts:321:17)
+
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        127.136s
+Ran all test suites.
+```

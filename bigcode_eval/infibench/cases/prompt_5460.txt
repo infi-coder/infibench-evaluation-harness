@@ -1,0 +1,65 @@
+I call the function 'booksRefresh()' from the parent in the child component, but I get the error:
+
+> TypeError: booksRefresh is not a function
+
+I don't know why, because `booksRefresh` is a function. Can you show a fixed definition of `AddBookForm`?
+
+Here is my code:
+
+```
+import React, {useState} from "react";
+import {Redirect} from "react-router";
+import {addBook} from "../api/api";
+import {Button} from "react-bootstrap";
+
+const AddBookForm = (booksRefresh) => {
+    const [title, setTitle] = useState();
+    const [description, setDescription] = useState();
+    const [submitted, setSubmitted] = useState(false);
+
+    const postRequestHandler = () => {
+        addBook(title, description);
+        booksRefresh();
+    }
+...
+ return (
+        ...
+            <Button type="submit" onClick={postRequestHandler} variant="outline-success">Add</Button>
+        </div>
+    )
+```
+
+
+Parent:
+
+```
+function App({history}) {
+  ...
+    const [changeInBooks, setChangeInBooks] = useState(0)
+
+    const booksRefresh = () => {
+        let incrementChangeInBook = changeInBooks + 1;
+        setChangeInBooks(incrementChangeInBook)
+    }
+return (
+        <div className="App">
+            <header className="App-header">
+                ...
+                            <Button variant="outline-success" onClick={() => history.push("/new-book")}>
+                                {ADD_BOOK}</Button>
+                ...
+            </header>
+            <Switch>
+                ...
+                <Route path="/new-book" exact render={() =>
+                    <AddBookForm
+                        booksRefresh={booksRefresh}/>
+                }/>
+               ...
+            </Switch>
+        </div>
+    );
+}
+
+export default withRouter(App);
+```

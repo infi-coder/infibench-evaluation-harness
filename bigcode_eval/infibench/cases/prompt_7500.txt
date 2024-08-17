@@ -1,0 +1,6 @@
+The following error occur when I tried to Generate Signed Bundle. Note: Error occurs after I updated my android studio 3.6.3 to version 4.0 and Gradle build to 6.1.1.
+What went wrong:
+Execution failed for task ':app:signReleaseBundle'.
+
+> A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
+  'other' has different root

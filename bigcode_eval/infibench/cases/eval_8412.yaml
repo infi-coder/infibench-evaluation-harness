@@ -1,0 +1,13 @@
+id: 8412
+prompt_path: prompt_8412.txt
+type: knowledge question-answering
+lang: system
+grading:
+  keywords:
+    - content:
+        content: windows
+      to_lower: true
+    - content:
+        content: linux
+      to_lower: true
+      neg: true

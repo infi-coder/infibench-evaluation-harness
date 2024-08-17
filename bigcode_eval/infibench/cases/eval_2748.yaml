@@ -1,0 +1,21 @@
+id: 2748
+prompt_path: prompt_2748.txt
+type: knowledge question-answering
+lang: python
+grading:
+  keywords:
+    - content:
+        and:
+          - content: assert(
+          - content: device
+    - async
+    - content:
+        or:
+          - content: cuda-memcheck
+          - content: tensor size
+          - content: illegal value
+    - content:
+        or:
+          - debugger
+          - cuda-gdb
+    - CPU

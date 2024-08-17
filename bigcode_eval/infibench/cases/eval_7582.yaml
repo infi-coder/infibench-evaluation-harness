@@ -1,0 +1,11 @@
+id: 7582
+prompt_path: prompt_7582.txt
+type: knowledge question-answering
+lang: git
+grading:
+  similarity:
+    - metric: rougeLsum
+      references:
+        - path: answer_7582_0.txt
+        - path: answer_7582_1.txt
+        - path: answer_7582_2.txt

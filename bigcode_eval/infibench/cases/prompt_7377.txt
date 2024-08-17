@@ -1,0 +1,10 @@
+I would like to use the NumPy functions np.random.randn to generate data x for a normal distribution for 100,000 points. Then plot a histogram with 20 bins. Please help me to finish the following Python code. The function draw_histogram should save the histogram figure into `figure.pdf`.
+
+```
+import numpy as np
+from matplotlib import pyplot as plt
+
+def draw_histogram():
+  x = np.random.randn(100000)
+  ...
+```

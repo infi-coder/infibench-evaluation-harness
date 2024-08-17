@@ -1,0 +1,19 @@
+I try to run a react-native-cli project using react-native start, and the metro bundler fails, saying the following:  
+
+```
+events.js 187
+throw er; //Unhandled 'error' event
+
+Error: EMFILE: too many open files, watch
+
+Emitted 'error' event on NodeWatcher isntance at:
+     at NodeWatcher: checkedEmitError (.../react-native-project/node_modules/sane/src/node_watcher.js:143:12)
+     at FSWatcher.emit (events.js:210:5)
+     at FSEvent.FSWatcher:_handle onchange (internal/fs/watchers.js:129:12) {
+   errno: -24,
+   syscall: 'watch',
+   code : 'EMFILE',
+   filename: null
+)
+Process terminated. Press <enter> to close the window
+```

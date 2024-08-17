@@ -1,0 +1,9 @@
+1. Login to your GitHub and go and setup a "Personal Access Token" at https://github.com/settings/tokens
+
+2. After you have your personal access token, go to terminal and change your "origin" url as below
+
+git remote set-url origin https://REPLACE-WITH-TOKEN@github.com/REPLACE-WITH-USERNAME/REPLACE-REPO-NAME.git/
+
+3. If it is your first time starting your repo and haven't pushed before, then add your initial origin as below
+
+git remote add origin https://REPLACE-WITH-TOKEN@github.com/REPLACE-WITH-USERNAME/REPLACE-REPO-NAME.git/

@@ -1,0 +1,29 @@
+I wrote the following node.js code to create a PDF file:
+
+```
+(async function() {
+
+      try {
+
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
+
+      await page.setContent(pdfOutput);
+      await page.emulateMedia("screen");
+      await page.pdf({
+        path: "routes/planiton/pdf/mypdf.pdf",
+        format: "A4",
+        printBackground: true
+      });
+
+      console.log('done');
+      await browser.close();
+      //process.exit();
+
+    } catch (e) {
+      console.log("Our Error", e)
+    }
+  })();
+```
+
+However, the code reports `Error: Failed to launch the browser process puppeteer` and `checked failed crashForExceptionInNonABIComplianceCodeRange`. What should I do?

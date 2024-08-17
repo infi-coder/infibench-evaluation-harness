@@ -1,0 +1,3 @@
+I'm using Windows Subsystem for Linux (WSL 2) with Oh My Zsh to pimp my bash, but I can't make the Ubuntu terminal render the Powerline fonts properly. Should I install the font on Windows or Linux? Please answer "Windows" or "Linux" without any other explanation.
+
+Answer:
