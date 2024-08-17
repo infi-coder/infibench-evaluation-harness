@@ -12,7 +12,7 @@ import anthropic
 parser = argparse.ArgumentParser()
 parser.add_argument('suite_path', help='File definition of the dataset suite')
 parser.add_argument('model_name', help='Model to inquiry from OpenAI',
-                    choices=["claude-3-opus-20240229", "claude-3-sonnet-20240229", "claude-3-haiku-20240307"])
+                    choices=["claude-3-opus-20240229", "claude-3-sonnet-20240229", "claude-3-haiku-20240307", "claude-3-5-sonnet-20240620"])
 parser.add_argument('--temp', type=float, help='Sampling temperature', default=0.2)
 parser.add_argument('--top_p', type=float, help='Sampling top probability', default=0.9)
 parser.add_argument('--n', type=int, help='Sampling numbers', default=3)

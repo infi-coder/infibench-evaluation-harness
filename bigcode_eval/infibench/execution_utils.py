@@ -691,7 +691,10 @@ def get_exec_results(prefix_from_file: str, generations: List[str], references: 
          str containing the test case
     """
     generations = [prefix_from_file + '\n' + gen for gen in generations]
-    code_metric = load("bigcode_eval/infibench/code_eval_octopack")
+    try:
+        code_metric = load("code_eval_octopack")
+    except Exception:
+        code_metric = load("bigcode_eval/infibench/code_eval_octopack")
 
     timeout = LANGUAGE_TO_TIMEOUT[lang] if timeout is None else timeout
     num_workers = LANGUAGE_TO_NUM_WORKERS[lang]

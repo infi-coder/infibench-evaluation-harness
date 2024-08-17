@@ -1,0 +1,4 @@
+Total score: 146.36341662662764 ± 11.687151607991181 / 234.0
+Total cases: 234
+Total cases with response: 0
+    
