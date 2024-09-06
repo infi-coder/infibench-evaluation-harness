@@ -1,0 +1,62 @@
+# You can use this image to create the docker image with infibench dependencies.
+# Alternatively, you can:
+# docker push likaixin00/infibench-env:latest
+
+
+# Use the base Ubuntu image
+FROM ubuntu:22.04
+
+# Set non-interactive mode for apt-get
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && \
+    apt-get install -y \
+        git \
+        python3 \
+        python3-pip \
+        python3-setuptools \
+        curl \
+        default-jdk \
+        libboost-all-dev \
+        mono-complete \
+        golang-go \
+        r-base \
+        libcurl4-openssl-dev \
+        libfontconfig1-dev \
+        libxml2-dev \
+        libharfbuzz-dev \
+        libfribidi-dev \
+        libfreetype6-dev \
+        libpng-dev \
+        libtiff5-dev \
+        libjpeg-dev && \
+    # Install Python packages
+    pip install -U pip setuptools  && \
+    # Install Node Version Manager (nvm) and Node.js
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash && \
+    export NVM_DIR="$HOME/.nvm" && \
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
+    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" && \
+    nvm install 22.7.0 && \
+    npm install -g jsdom typescript && \
+    # Install R packages
+    Rscript -e 'install.packages("assert", repos="http://cran.rstudio.com/")' && \
+    Rscript -e 'install.packages("stringr", repos="http://cran.rstudio.com/")' && \
+    Rscript -e 'install.packages("tidyverse", repos="http://cran.rstudio.com/")' && \
+    Rscript -e 'install.packages("dplyr", repos="http://cran.rstudio.com/")' && \
+    Rscript -e 'install.packages("data.table", repos="http://cran.rstudio.com/")'
+
+# Clone the repository and set up the environment
+RUN git clone https://github.com/infi-coder/infibench-evaluation-harness && \
+    cd infibench-evaluation-harness && \
+    pip3 install -r requirements.txt && \
+    pip3 install matplotlib
+
+# Set environment variables
+ENV PATH=/root/.nvm/versions/node/v22.7.0/bin:$PATH
+
+# Set the working directory
+WORKDIR /infibench-evaluation-harness
+
+# Command to run bash shell
+CMD ["/bin/bash"]
