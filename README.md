@@ -75,6 +75,8 @@ The raw model responses of our evaluation presented in the website and the repor
 
 ## Setup
 
+Reference Dockerfile (contributed from [@likaixin2000](https://github.com/likaixin2000)): https://github.com/infi-coder/infibench-evaluation-harness/blob/main/Dockerfile-infibench
+
 At this point, we only support Linux environment.
 
 ```bash
